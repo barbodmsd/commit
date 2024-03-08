@@ -1,10 +1,10 @@
-import React from 'react'
-import Notes from './Components/Notes'
+import React from "react";
+import Counter from "./Components/Counter";
 
 export default function App() {
   return (
     <>
-    <Notes/>
+      <Counter />
     </>
-  )
+  );
 }
