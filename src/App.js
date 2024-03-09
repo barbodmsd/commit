@@ -3,8 +3,8 @@ import CleanChat from './Components/CleanChat'
 
 export default function App() {
   return (
-    <>
-    <CleanChat/>
-    </>
+    <div>
+      <CleanChat/>
+    </div>
   )
 }
