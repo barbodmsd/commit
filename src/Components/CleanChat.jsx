@@ -86,7 +86,7 @@ export default class CleanChat extends Component {
             barbodMassageList:[
                 ...this.state.barbodMassageList,
                 {
-                    type:'recieve',
+                    type:'receive',
                     massage,
                     time:new Date().toLocaleTimeString()
                 }
@@ -100,7 +100,10 @@ export default class CleanChat extends Component {
           <div className="panel" id="chat">
             <Header title={this.state.barbodTitle}/>
             <Main massageList={this.state.barbodMassageList} avatar={this.state.barbodAvatar}/>
-            <Footer />
+            <Footer handleMassage={this.barbodSent.bind(this)}/>
+            <Header title={this.state.salehTitle}/>
+            <Main massageList={this.state.salehMassageList} avatar={this.state.barbodAvatar}/>
+            <Footer handleMassage={this.salehSent.bind(this)}/>
           </div>
         </div>
         </div>
