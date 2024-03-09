@@ -1,8 +1,8 @@
 import React from 'react'
 
-export default function Chat() {
+export default function Chat({img,massage,time,isLeft}) {
   return (
-    <div className="chat">
+    <div className={`chat ${isLeft&&'chat-left'}`}>
         <div className="chat-avatar">
           <a className="avatar avatar-online" data-toggle="tooltip" href="#" data-placement="right" title="" data-original-title="June Lane">
             <img src={img} alt="..."/>
