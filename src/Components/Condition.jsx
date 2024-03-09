@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import User from './user'
+import User from './User'
 import Guest from './Guest'
 
 export default class Condition extends Component {
@@ -17,8 +17,8 @@ export default class Condition extends Component {
   render() {
     return (
       <>
-      {this.state.isLogin?<User/>:<Guest/>}this
-      <button className={`btn ${this.state.isLogin?'btn-danger':'btn-success '}`} onClick={}>{this.state.isLogin?'Logout':'Login'}</button>
+      {this.state.isLogin?<User/>:<Guest/>}
+      <button className={`btn ${this.state.isLogin?'btn-danger':'btn-success '}`} onClick={this.handleClick.bind(this)}>{this.state.isLogin?'Logout':'Login'}</button>
       </>
     )
   }
