@@ -26,29 +26,29 @@ export default class CleanChat extends Component {
                 },
             ],
             barbodAvatar:{
-                Saleh:'https://bootdey.com/img/Content/avatar/avatar1.png',
+                saleh:'https://bootdey.com/img/Content/avatar/avatar1.png',
                 barbod:'https://bootdey.com/img/Content/avatar/avatar2.png',
             },
             salehTitle:"Saleh",
             salehMassageList:[
                 {
-                    type:'sent',
+                    type:'receive',
                     massage:'Good morning, sir. What can I do for you?',
                     time:'11:37:08 AM'
                 },
                 {
-                    type:'receive',
+                    type:'sent',
                     massage:'Well, I AM just looking around.',
                     time:'11:39:08 AM'
                 },
                 {
-                    type:'sent',
+                    type:'receive',
                     massage:'If necessary, please ask me. Barbod',
                     time:'11:40:08 AM'
                 },
             ],
             salehAvatar:{
-                Saleh:'https://bootdey.com/img/Content/avatar/avatar2.png',
+                saleh:'https://bootdey.com/img/Content/avatar/avatar2.png',
                 barbod:'https://bootdey.com/img/Content/avatar/avatar1.png',
             }
         }
