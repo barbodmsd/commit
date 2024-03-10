@@ -10,11 +10,20 @@ export default class Blog extends Component {
             currentIndexPost:null
         }
     }
+    componentDidMount(){
+        (async()=>{
+            try{
+                const res=await fetch('http://localhost:3000/posts')
+                const data=await res.json()
+                this.setState({posts:data,currentIndexPost:0})
+            }catch(err){alert(err)}
+        })()
+    }
   render() {
     return (
       <>
-       <Asaide/>
-        <Main/>
+       {this.state.posts?<><Asaide/>
+        <Main/></>:}
       
       </>
     )
