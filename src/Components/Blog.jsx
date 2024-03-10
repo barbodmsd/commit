@@ -1,39 +1,49 @@
-import React, { Component } from 'react'
-import Main from './Main'
-import SideBar from './SideBar'
+import React, { Component } from "react";
+import Main from "./Main";
+import SideBar from "./SideBar";
 
 export default class Blog extends Component {
-    constructor(props){
-        super(props)
-        this.state={
-            posts:null,
-            currentIndexPost:null
-        }
-    }
-    componentDidMount(){
-        (async()=>{
-            try{
-                const res=await fetch('http://localhost:3000/posts')
-                const data=await res.json()
-                this.setState({
-                    posts:data,
-                    currentIndexPost:0
-                })
-            }catch(err){alert(err)}
-        })()
-    }
-    handleTile(index){
+  constructor(props) {
+    super(props);
+    this.state = {
+      posts: null,
+      currentIndexPost: null,
+    };
+  }
+  componentDidMount() {
+    (async () => {
+      try {
+        const res = await fetch("http://localhost:3000/posts");
+        const data = await res.json();
         this.setState({
-            currentIndexPost:index
-        })
-    }
+          posts: data,
+          currentIndexPost: 0,
+        });
+      } catch (err) {
+        alert(err);
+      }
+    })();
+  }
+  handleTitle(index) {
+    this.setState({
+      currentIndexPost: index,
+    });
+  }
   render() {
     return (
       <>
-       <SideBar posts={this.posts} handleTile={this.handleTile.bind(this)}/>
-        <Main post={this.state.posts[this.state.currentIndexPost]}/>
-      
+        {this.state.posts ? (
+          <>
+            <SideBar
+              posts={this.state.posts}
+              handleTitle={this.handleTitle.bind(this)}
+            />
+            <Main post={this.state.posts[this.state.currentIndexPost]} />
+          </>
+        ) : (
+          <h2>Loading...</h2>
+        )}
       </>
-    )
+    );
   }
 }
