@@ -11,7 +11,7 @@ export default class Main extends Component {
     componentDidMount(){
         (async()=>{
             try{
-                const res=await fetch(`http://localhost:3000/comments`)
+                const res=await fetch(`http://localhost:3000/comments?post-id=${this.props.post.id}`)
                 const data=await res.json()
                 this.setState({comments:data})
             }catch(err){alert(err)}
@@ -25,7 +25,7 @@ export default class Main extends Component {
             <h1>{this.props.post.title}</h1>
             <div>{this.props.post.body}</div>
         </div>
-       <Comments comments={}/>
+       <Comments comments={this.state.comments}/>
     </div>
     )
   }
