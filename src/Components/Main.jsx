@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Comments from './Comments'
 
 export default class Main extends Component {
     constructor(props){
@@ -6,6 +7,15 @@ export default class Main extends Component {
         this.state={
             comments:null
         }
+    }
+    componentDidMount(){
+        (async()=>{
+            try{
+                const res=await fetch(`http://localhost:3000/comments`)
+                const data=await res.json()
+                this.setState({comments:data})
+            }catch(err){alert(err)}
+        })()
     }
   render() {
     return (
@@ -15,18 +25,7 @@ export default class Main extends Component {
             <h1>{this.props.post.title}</h1>
             <div>{this.props.post.body}</div>
         </div>
-        <div class="comments">
-            <p>Comments:</p>
-            <div class="comment">
-                <p>Comment 1</p>
-            </div>
-            <div class="comment">
-                <p>Comment 2</p>
-            </div>
-            <div class="comment">
-                <p>Comment 3</p>
-            </div>
-        </div>
+       <Comments comments={}/>
     </div>
     )
   }
