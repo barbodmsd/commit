@@ -1,12 +1,11 @@
 import React from 'react'
 
-export default function SideBar() {
+export default function SideBar({posts,handleTitle}) {
+    const titleItems=posts?.map((e,index)=><li key={index} onClick={()=>handleTitle(index)}>{e.title}</li>)
   return (
     <aside>
             <ul>
-                <li>Post 1</li>
-                <li>Post 2</li>
-                <li>Post 3</li>
+                {titleItems}
             </ul>
 
         </aside>
