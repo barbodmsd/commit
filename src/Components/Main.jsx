@@ -11,13 +11,26 @@ export default class Main extends Component {
     componentDidMount(){
         (async()=>{
             try{
-                const res=await fetch(`http://localhost:3000/comments`)
+                const res=await fetch(`http://localhost:3000/comments?post-id=${this.props.post.id}`)
                 const data=await res.json()
                 this.setState({
                     comments:data
                 })
             }catch(err){alert(err)}
         })()
+    }
+    componentDidUpdate(prevProps){
+        if(prevProps.post.id!==this.props.post.id){
+            (async()=>{
+                try{
+                    const res=await fetch(`http://localhost:3000/comments?post-id=${this.props.post.id}`)
+                    const data=await res.json()
+                    this.setState({
+                        comments:data
+                    })
+                }catch(err){alert(err)}
+            })()
+        }
     }
   render() {
     return (
