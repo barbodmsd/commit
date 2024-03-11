@@ -7,10 +7,18 @@ export default class Time extends Component {
             time:new Date().toLocaleTimeString()
         }
     }
-    co
+    componentDidMount(){
+        setInterval(()=>{
+            this.setState({time:new Date().toLocaleTimeString()})
+            console.log(this.state.time);
+        },1000)
+    }
   render() {
     return (
-      <div>Time</div>
+      <>
+      {this.state.time}
+      
+      </>
     )
   }
 }
