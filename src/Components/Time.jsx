@@ -8,15 +8,18 @@ export default class Time extends Component {
         }
     }
     componentDidMount(){
-        setInterval(()=>{
+        this.clock=setInterval(()=>{
             this.setState({time:new Date().toLocaleTimeString()})
-            console.log(this.state.time);
+            console.log(new Date().toLocaleTimeString());
         },1000)
+    }
+    componentWillUnmount(){
+        clearInterval(this.clock)
     }
   render() {
     return (
       <>
-      {this.state.time}
+      <h2>{this.state.time}</h2>
       
       </>
     )
