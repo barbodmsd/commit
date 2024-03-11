@@ -1,8 +1,8 @@
 import React from 'react'
-import Counter from './Components/Counter'
+import ChangeTitle from './ChangeTitle'
 
 export default function App() {
   return (
-    <Counter/>
-  )
+<ChangeTitle/>
+    )
 }

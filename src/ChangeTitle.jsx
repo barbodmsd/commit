@@ -1,7 +1,17 @@
-import React from 'react'
+import React, { useEffect, useState } from "react";
 
 export default function ChangeTitle() {
+  const [title, setTitle] = useState("change title");
+  useEffect(()=>{
+    document.title=title
+  },[title])
   return (
-    <div>ChangeTitle</div>
-  )
+    <div>
+      <input
+        type="text"
+        placeholder="enter..."
+        onChange={(e) => setTitle(e.target.value)}
+      />
+    </div>
+  );
 }
