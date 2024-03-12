@@ -1,15 +1,30 @@
 import React, { useState } from "react";
-import Result from "./Result";
 
 export default function Calculator() {
   const [inp1, setInp1] = useState("");
   const [inp2, setInp2] = useState("");
   const [operator, setOperator] = useState("");
+  const [result, setResult] = useState();
   const [showResult, setShowResult] = useState(false);
   const handleSubmit = (e) => {
     e.preventDefault();
     setShowResult(!showResult);
-    <Result inputOne={inp1} inputTwo={inp2} operator={operator} />;
+    switch (operator) {
+      case "+":
+        setResult(inp1 + inp2);
+        break;
+      case "-":
+        setResult(inp1 - inp2);
+        break;
+      case "*":
+        setResult(inp1 * inp2);
+        break;
+      case "/":
+        setResult(inp1 / inp2);
+        break;
+      default:
+        setResult("Error");
+    }
     setInp1("");
     setInp2("");
     setOperator("");
@@ -40,7 +55,7 @@ export default function Calculator() {
         <button disabled={operator === ""} type="submit">
           {operator === "" ? "No" : "Submit"}
         </button>
-        {showResult && <Result />}
+        {showResult && <h3>{`Result:${result}`}</h3>}
       </form>
     </div>
   );
