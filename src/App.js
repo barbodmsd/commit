@@ -1,10 +1,8 @@
 import React from 'react'
-import Clock from './Components/Clock'
+import Calculator from './Components/Calculator'
 
 export default function App() {
   return (
-    <div>
-      <Clock/>
-    </div>
+    <div><Calculator/></div>
   )
 }
