@@ -8,9 +8,9 @@ export default function Clock() {
       {showTime && <Time />}
       <button
         className={`btn ${showTime ? "btn-danger " : "btn-success"}`}
-        onClick={!showTime}
+        onClick={()=>setShowTime(!showTime)}
       >
-        ${showTime ? "Hide time" : "Show time"}
+        {showTime ? "Hide time" : "Show time"}
       </button>
     </div>
   );
