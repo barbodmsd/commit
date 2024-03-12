@@ -10,6 +10,11 @@ export default function Calculator() {
     e.preventDefault();
     setClick(!click);
   };
+  const handleState=(s)=>{
+    setFirstInp(s)
+    setSecondInp(s)
+    setSelect(s)
+  }
   return (
     <div>
       <form onSubmit={handleSubmit}>
@@ -24,7 +29,7 @@ export default function Calculator() {
         </select>
         <button type="submit">Submit</button>
       </form>
-      {click && <Result a={firstInp} b={secondInp} operator={select} />}
+      {click && <Result a={firstInp} b={secondInp} operator={select} handleState={handleState}/>}
     </div>
   );
 }

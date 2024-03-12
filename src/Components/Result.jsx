@@ -1,15 +1,26 @@
-import React from 'react'
+import React from "react";
 
-export default function Result({a,b,operator}) {
-    const calculator={
-        switch(operator){
-            
-        
-        }
+export default function Result({ a, b, operator ,handleState}) {
+  const handle = () => {
+    switch (operator) {
+      case "+":
+        return Number(a+b);
+        break;
+      case "-":
+        return a - b;
+        break;
+      case "*":
+        return a * b;
+        break;
+      case "/":
+        return a / b;
+        break;
     }
+    handleState('')
+  };
   return (
     <div>
-        {alert(a, b)}
+      <h1>{handle()}</h1>
     </div>
-  )
+  );
 }
