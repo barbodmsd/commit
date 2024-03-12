@@ -1,7 +1,10 @@
 import React from 'react'
 
-export default function Result() {
+export default function Result({a,b,operator}) {
   return (
-    <div>Result</div>
+    <div>
+        <h1>result:</h1>
+        {a}{b}{operator}
+    </div>
   )
 }

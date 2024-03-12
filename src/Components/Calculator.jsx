@@ -1,13 +1,19 @@
 import React, { useState } from "react";
+import Result from "./Result";
 
 export default function Calculator() {
-  const [inp1, setInp1] = useState('');
-  const [inp2, setInp2] = useState('');
+  const [inp1, setInp1] = useState("");
+  const [inp2, setInp2] = useState("");
   const [operator, setOperator] = useState("");
-
+  const [showResult,setShowResult]=useState(false)
+ const handleSubmit=(e)=>{
+    e.preventDefault();
+    setShowResult(!showResult);
+    <Result a={inp1} b={inp2} operator={operator}/>
+  }
   return (
-    <div >
-      <form >
+    <div>
+      <form onSubmit={handleSubmit} >
         <input
           type="text"
           value={inp1}
@@ -18,7 +24,6 @@ export default function Calculator() {
           type="text"
           value={inp2}
           placeholder="Number:"
-
           onChange={(e) => setInp2(e.target.value)}
         />
         <select value={operator} onChange={(e) => setOperator(e.target.value)}>
@@ -30,6 +35,7 @@ export default function Calculator() {
         </select>
         <button type="submit">Submit</button>
       </form>
+      {showResult&&<Result/>}
     </div>
   );
 }
