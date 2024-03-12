@@ -5,7 +5,7 @@ export default function Result({ a, b, operator }) {
     const result = () => {
       switch (operator) {
         case "+":
-          return setAnswer(a + b);
+          return a + b;
           break;
         case "-":
           return a - b;
@@ -19,8 +19,7 @@ export default function Result({ a, b, operator }) {
       }
     };
   return (
-    <div>
-      <h2>Answer:{answer}</h2>
-    </div>
+      <h2>Answer:{result}</h2>
+    
   );
 }
