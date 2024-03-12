@@ -5,14 +5,14 @@
 }
 form{
     width: 200px;
-    height: 250px;
+    min-height: 300px;
     margin: 100px auto;
 border-radius: 20px;
     background-color: gainsboro;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
-    gap: 10px;
+    gap: 20px;
     flex-direction: column;
     box-shadow: -5px -5px 5px 2px blueviolet;
 }
@@ -29,4 +29,7 @@ form button{
     border-radius: 15px;
     background-color: blueviolet;
     color: white;
+}
+form button:disabled{
+    background-color: cornflowerblue;
 }

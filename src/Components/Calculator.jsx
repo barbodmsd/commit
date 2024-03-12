@@ -5,19 +5,23 @@ export default function Calculator() {
   const [inp1, setInp1] = useState("");
   const [inp2, setInp2] = useState("");
   const [operator, setOperator] = useState("");
-  const [showResult,setShowResult]=useState(false)
- const handleSubmit=(e)=>{
+  const [showResult, setShowResult] = useState(false);
+  const handleSubmit = (e) => {
     e.preventDefault();
     setShowResult(!showResult);
-    <Result a={inp1} b={inp2} operator={operator}/>
-  }
+    <Result a={inp1} b={inp2} operator={operator} />;
+    setInp1("");
+    setInp2("");
+    setOperator("");
+  };
   return (
     <div>
-      <form onSubmit={handleSubmit} >
+      <form onSubmit={handleSubmit}>
         <input
           type="text"
           value={inp1}
           placeholder="Number:"
+          autoFocus
           onChange={(e) => setInp1(e.target.value)}
         />
         <input
@@ -33,9 +37,9 @@ export default function Calculator() {
           <option value="/">/</option>
           <option value="*">*</option>
         </select>
-        <button type="submit">Submit</button>
+        <button disabled={operator===''}  type="submit">{(operator==='')?'No':'Submit'}</button>
+        {showResult && <Result />}
       </form>
-      {showResult&&<Result/>}
     </div>
   );
 }

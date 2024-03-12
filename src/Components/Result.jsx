@@ -1,10 +1,26 @@
-import React from 'react'
+import React, { useState } from "react";
 
-export default function Result({a,b,operator}) {
+export default function Result({ a, b, operator }) {
+  const [answer,setAnswer]=useState()
+    const result = () => {
+      switch (operator) {
+        case "+":
+          return setAnswer(a + b);
+          break;
+        case "-":
+          return a - b;
+          break;
+        case "/":
+          return a / b;
+          break;
+        case "*":
+          return a * b;
+          break;
+      }
+    };
   return (
     <div>
-        <h1>result:</h1>
-        {a}{b}{operator}
+      <h2>Answer:{answer}</h2>
     </div>
-  )
+  );
 }
