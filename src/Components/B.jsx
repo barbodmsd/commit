@@ -1,7 +1,9 @@
 import React from 'react'
 
-export default function B() {
+export default function B({a,b,op}) {
   return (
-    <div>B</div>
+    <div>
+        result:{alert(a,b,op)}
+    </div>
   )
 }

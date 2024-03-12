@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import B from "./B";
 
 export default function A() {
   const [firstInput, setFirstInput] = useState("");
-  const [secondInput, setSecondInput] = setState("");
+  const [secondInput, setSecondInput] = useState("");
   const [select, setSelect] = useState("");
   const [showResult, setShowResult] = useState(false);
   const handleSubmit = (e) => {
@@ -33,6 +33,7 @@ export default function A() {
         </select>
         <button type="submit">Submit</button>
       </form>
+      {showResult&&<B/>}
     </div>
   );
 }
