@@ -10,7 +10,7 @@ export default function Calculator() {
   const handleSubmit = (e) => {
     e.preventDefault();
     setShowResult(!showResult);
-    <Result a={inp1} b={inp2} operator={operator} />;
+    <Result inputOne={inp1} inputTwo={inp2} operator={operator} />;
     setInp1("");
     setInp2("");
     setOperator("");
