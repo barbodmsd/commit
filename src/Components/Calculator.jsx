@@ -11,7 +11,7 @@ export default function Calculator() {
     setShowResult(!showResult);
     switch (operator) {
       case "+":
-        setResult(inp1 + inp2);
+        setResult(+inp1 + +inp2);
         break;
       case "-":
         setResult(inp1 - inp2);
@@ -53,7 +53,7 @@ export default function Calculator() {
           <option value="*">*</option>
         </select>
         <button disabled={operator === ""} type="submit">
-          {operator === "" ? "No" : "Submit"}
+          {operator === "" ? "Can't" : "Submit"}
         </button>
         {showResult && <h3>{`Result:${result}`}</h3>}
       </form>
