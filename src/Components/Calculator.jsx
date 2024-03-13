@@ -4,10 +4,16 @@ export default function Calculator() {
     const [inp1,setInp1]=useState("");
     const [inp2,setInp2]=useState("");
     const [select,setSelect]=useState("");
+    const [result,setResult]=useState('')
+    const [showResult,setShowResult]=useState(false)
     const handleSubmit=(e)=>{
         e.preventDefault()
+        setShowResult(!showResult)
         switch(select){
-            case '+':setInp1(inp1+inp2
+            case '+':setResult(inp1+inp2);break;
+            case '-':setResult(inp1-inp2);break;
+            case '/':setResult(inp1/inp2);break;
+            case '*':setResult(inp1*inp2);break;
         }
 
     }
@@ -24,6 +30,7 @@ export default function Calculator() {
                 <option value="*">*</option>
             </select>
             <button type="submit">Submit</button>
+            {showResult&&result}
         </form>
     </div>
   )
