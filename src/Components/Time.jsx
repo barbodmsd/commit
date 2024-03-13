@@ -5,7 +5,7 @@ export default function Time() {
   useEffect(() => {
     const timer = setInterval(() => {
       setTime(new Date().toLocaleTimeString());
-      console.log(time)
+      console.log(new Date().toLocaleTimeString())
     }, 1000);
     return () => clearInterval(timer);
   }, []);
