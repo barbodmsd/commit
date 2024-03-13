@@ -1,7 +1,8 @@
 import React from 'react'
+import ChangeTitle from './Components/ChangeTitle'
 
 export default function App() {
   return (
-    <div>App</div>
+    <div><ChangeTitle/></div>
   )
 }
