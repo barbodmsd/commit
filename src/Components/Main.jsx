@@ -1,4 +1,5 @@
 import React from 'react'
+import Units from './Units'
 
 export default function Main({hero}) {
     const {name,img,level,description,units}=hero
@@ -19,22 +20,7 @@ export default function Main({hero}) {
           </div>
 
           <div className={`clash-card__unit-stats clash-card__unit-stats--${name} clearfix`}>
-            <div className={`one-third`}>
-              <div className={`stat`}>
-                20<sup>S</sup>
-              </div>
-              <div className={`stat-value`}>Training</div>
-            </div>
-
-            <div className={`one-third`}>
-              <div className={`stat`}>16</div>
-              <div className={`stat-value`}>Speed</div>
-            </div>
-
-            <div className={`one-third no-border`}>
-              <div className={`stat`}>150</div>
-              <div className={`stat-value`}>Cost</div>
-            </div>
+            <Units units={units}/>
           </div>
         </div>
   )
