@@ -19,9 +19,9 @@ export default function Calculator() {
     }
     return (
     <div>
-        <form >
-            <input type="text" value={inp1}  onChange={(e)=>setInp1(e.target.value)}/>
-            <input type="text" value={inp2}  onChange={(e)=>setInp2(e.target.value)}/>
+        <form onSubmit={handleSubmit}>
+            <input type="text" placeholder='Number:' value={inp1}  onChange={(e)=>setInp1(e.target.value)}/>
+            <input type="text" placeholder='Number:' value={inp2}  onChange={(e)=>setInp2(e.target.value)}/>
             <select value={select} onChange={(e)=>setSelect(e.target.value)} >
                 <option value="">Choose One</option>
                 <option value="+">+</option>
