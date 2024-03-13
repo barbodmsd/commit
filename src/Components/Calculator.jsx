@@ -7,7 +7,7 @@ export default function Calculator() {
     const handleSubmit=(e)=>{
         e.preventDefault()
         switch(select){
-            case '+':setInp1(inp1+inp2)
+            case '+':setInp1(inp1+inp2
         }
 
     }
