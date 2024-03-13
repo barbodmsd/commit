@@ -1,4 +1,4 @@
-import React from `react`;
+import React from 'react';
 import Arrow from "./Arrow";
 import { useEffect, useState } from "react";
 import Main from "./Main";
