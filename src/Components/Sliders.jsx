@@ -5,7 +5,7 @@ import Main from "./Main";
 
 export default function Sliders() {
     const [heroes,setHeroes]=useState()
-    const [currentIndexHeroes,setCurrentIndexHeroes]=useState()
+    const [currentIndexHeroes,setCurrentIndexHeroes]=useState(0)
     useEffect(()=>{
         (async()=>{
             try{
@@ -19,8 +19,8 @@ export default function Sliders() {
     <div className={`slide-container`}>
       <div classNameName={`wrapper`}>
        {heroes?<> <Arrow direction={'prev'}/>
-        <Main/>
-        <Arrow direction={'next'}/></>:}
+        <Main hero={heroes[currentIndexHeroes]}/>
+        <Arrow direction={'next'}/></>:<h2>Loading...</h2>}
       </div>
     </div>
   );

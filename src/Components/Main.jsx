@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function Main() {
+export default function Main({}) {
   return (
     <div className={`clash-card barbarian`}>
           <div className={`clash-card__image clash-card__image--barbarian`}>
