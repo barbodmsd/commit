@@ -7,10 +7,10 @@ export default function Units({ units }) {
       className={`one-third ${units.length - 1 === index && "no-border"}`}
     >
       <div className={`stat`}>
-        20<sup>S</sup>
+        {e.state}<sup>S</sup>
       </div>
-      <div className={`stat-value`}>Training</div>
+      <div className={`stat-value`}>{e.value}</div>
     </div>
   ));
-  return { items };
+  return <div>{ items }</div>;
 }
