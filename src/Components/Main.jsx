@@ -1,22 +1,21 @@
 import React from 'react'
 
-export default function Main({}) {
+export default function Main({hero}) {
+    const {name,img,level,description,units}=hero
   return (
-    <div className={`clash-card barbarian`}>
+    <div className={`clash-card ${name}`}>
           <div className={`clash-card__image clash-card__image--barbarian`}>
             <img
-              src={`https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/barbarian.png`}
+              src={img}
               alt={`barbarian`}
             />
           </div>
           <div className={`clash-card__level clash-card__level--barbarian`}>
-            Level 4
+            {level}
           </div>
           <div className={`clash-card__unit-name`}>The Barbarian</div>
           <div className={`clash-card__unit-description`}>
-            The Barbarian is a kilt-clad Scottish warrior with an angry,
-            battle-ready expression, hungry for destruction. He has Killer
-            yellow horseshoe mustache.
+            {description}
           </div>
 
           <div className={`clash-card__unit-stats clash-card__unit-stats--barbarian clearfix`}>
