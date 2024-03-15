@@ -13,7 +13,7 @@ export default function Sliders() {
         const data = await res.json();
         setHeroes(data);
       } catch (error) {
-        alert(err);
+        alert(error);
       }
     })();
   }, []);
@@ -29,7 +29,7 @@ const  nextSlide=()=>{
         {heroes ? (
           <>
             <Arrow direction={'prev'} handleClick={prevSlide}/>
-            <Main heroes={heroes[heroIndex]} />
+            <Main hero={heroes[heroIndex]} />
             <Arrow direction={'next'} handleClick={nextSlide}/>
           </>
         ) : (

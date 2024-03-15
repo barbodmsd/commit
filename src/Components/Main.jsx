@@ -1,6 +1,7 @@
 import React from 'react'
 
-export default function Main() {
+export default function Main({hero}) {
+    const {name,img,description,level,units}=hero
   return (
     <div class="clash-card barbarian">
     <div class="clash-card__image clash-card__image--barbarian">
