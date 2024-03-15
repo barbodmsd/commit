@@ -17,14 +17,20 @@ export default function Sliders() {
       }
     })();
   }, []);
+const  nextSlide=()=>{
+    heroIndex===heroes.length-1?setHeroIndex(0):setHeroIndex(heroIndex+1);
+  }
+  const prevSlide=()=>{
+    heroIndex===0?setHeroIndex(heroes.length-1):setHeroIndex(heroIndex-1);
+  }
   return (
     <div class="slide-container">
       <div class="wrapper">
         {heroes ? (
           <>
-            <Arrow />
+            <Arrow direction={'prev'} handleClick={prevSlide}/>
             <Main heroes={heroes[heroIndex]} />
-            <Arrow />
+            <Arrow direction={'next'} handleClick={nextSlide}/>
           </>
         ) : (
           <div
