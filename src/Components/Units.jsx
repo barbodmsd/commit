@@ -1,10 +1,11 @@
 import React from 'react'
 
-export default function Units() {
+export default function Units({unit}) {
+    const items=unit?.map((e,index)=><div className={`one-third `}>
+    <div className={`stat`}>{e.state}</div>
+    <div className={`stat-value`}>{e.value}</div>
+  </div>)
   return (
-    <div className={`one-third`}>
-    <div className={`stat`}>16</div>
-    <div className={`stat-value`}>Speed</div>
-  </div>
+    <>{items}</>
   )
 }

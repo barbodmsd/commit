@@ -24,8 +24,8 @@ const  nextSlide=()=>{
     heroIndex===0?setHeroIndex(heroes.length-1):setHeroIndex(heroIndex-1);
   }
   return (
-    <div class="slide-container">
-      <div class="wrapper">
+    <div className="slide-container">
+      <div className="wrapper">
         {heroes ? (
           <>
             <Arrow direction={'prev'} handleClick={prevSlide}/>

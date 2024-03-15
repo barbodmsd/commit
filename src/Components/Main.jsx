@@ -14,7 +14,7 @@ export default function Main({hero}) {
     <div className={`clash-card__level clash-card__level--${name}`}>
      {level}
     </div>
-    <div className={`clash-card__unit-name`}>The ${name}</div>
+    <div className={`clash-card__unit-name`}>The {name}</div>
     <div className={`clash-card__unit-description`}>
      {description}
     </div>
