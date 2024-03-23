@@ -1,16 +1,11 @@
 import React from "react";
+import Arrow from "./Arrow";
 
 export default function Slider() {
   return (
     <div class="slide-container">
       <div class="wrapper">
-        <div class="arrow-wrapper">
-          <div class="round">
-            <div id="cta">
-              <span class="arrow prev"></span>
-            </div>
-          </div>
-        </div>
+    <Arrow/>
         <div class="clash-card barbarian">
           <div class="clash-card__image clash-card__image--barbarian">
             <img
@@ -47,13 +42,7 @@ export default function Slider() {
             </div>
           </div>
         </div>
-        <div class="arrow-wrapper">
-          <div class="round">
-            <div id="cta">
-              <span class="arrow next"></span>
-            </div>
-          </div>
-        </div>
+       <Arrow/>
       </div>
     </div>
   );
