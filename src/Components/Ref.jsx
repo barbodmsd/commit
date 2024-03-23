@@ -5,12 +5,12 @@ export default function Ref() {
   const divEl = useRef();
   useEffect(() => {
     divEl.current.style.backgroundColor = inputRef.current.value;
-  }, [inputRef.current.value]);
+  }, [inputRef ]);
 
   return (
     <>
-      <input type="text" />
-      <div>Color change</div>
+      <input ref={inputRef} type="text" />
+      <div ref={divEl}>Color change</div>
       <button>Click</button>
     </>
   );

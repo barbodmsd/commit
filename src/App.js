@@ -1,7 +1,11 @@
-import React from 'react'
+import React from "react";
+import Ref from "./Components/Ref";
+
 
 export default function App() {
   return (
-    <div>App</div>
-  )
+    <div>
+      <Ref/>
+    </div>
+  );
 }
