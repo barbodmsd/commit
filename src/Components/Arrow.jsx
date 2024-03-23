@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function Arrow({direction,handleClick}) {
+export default function Arrow({direction}) {
   return (
     <div className="arrow-wrapper">
     <div className="round">
