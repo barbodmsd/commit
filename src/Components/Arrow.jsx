@@ -5,7 +5,7 @@ export default function Arrow({direction,handleClick}) {
     <div className="arrow-wrapper">
     <div className="round">
       <div id="cta">
-        <span className="arrow prev"></span>
+        <span className={`arrow ${direction}`}></span>
       </div>
     </div>
   </div>
