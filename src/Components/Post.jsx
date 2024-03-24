@@ -8,11 +8,14 @@ export default function Post() {
   const [toast, setToast] = useState();
   useEffect(async()=>{
     try {
-        const res=await fetch(``)
+        const res=await fetch(`https://jsonplaceholder.typicode.com/posts/${postId}`)
         const data=await res.json()
-        setTitle
+        setTitle(data.title)
+        setLoading(false)
+        toast({type:'success',message:`post with id ${postId} loaded`})
     } catch (error) {
-        
+        setLoading(false)
+        setToast({type:'error',message:`post with id ${postId} failed to load`})
     }
     const handleChange=(e)=>{
         setPostId(e.target.value)
