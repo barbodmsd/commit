@@ -1,28 +1,26 @@
+import { useFormik } from "formik";
 import React from "react";
 
 export default function YoutubeForm() {
+   const formik= useFormik({})
+   console.log(formik)
   return (
     <form class="form">
-      <p class="title">Register </p>
-      <p class="message">Sign up now and get full access to our app. </p>
-
       <label>
-        <input class="input" type="email" placeholder="" required="" />
-        <span>Email</span>
+        Username
+        <input class="input" id="username" type="txt" name="username"/>
       </label>
 
       <label>
-        <input class="input" type="password" placeholder="" required="" />
-        <span>Password</span>
+        E-mail
+        <input class="input" id="email" type="password" name="email" />
       </label>
+
       <label>
-        <input class="input" type="password" placeholder="" required="" />
-        <span>Confirm password</span>
+        Channel
+        <input class="input" id="channel" type="" name="channel" />
       </label>
       <button class="submit">Submit</button>
-      <p class="signin">
-        Already have an account ? <a href="#">Sign in</a>{" "}
-      </p>
     </form>
   );
 }
