@@ -30,7 +30,7 @@ export default function Post() {
   };
   return (
     <div>
-      <input type="number" />
+      <input type="number" onChange={handleChange}/>
       {loading ? (
         <div>
           <DNA />
