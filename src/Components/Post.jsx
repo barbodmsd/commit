@@ -8,13 +8,20 @@ export default function Post() {
   const [toast, setToast] = useState();
   useEffect(async()=>{
     try {
-        
+        const res=await fetch(``)
+        const data=await res.json()
+        setTitle
     } catch (error) {
         
     }
+    const handleChange=(e)=>{
+        setPostId(e.target.value)
+        setLoading(true)
+        setTitle('')
+    }
   },[postId])
   return <div>
-    <input type="number" value={postId} />
+    <input type="number" onChange={handleChange} value={postId} />
     {loading?<DNA/>:<h5>{title}</h5>}
   </div>;
 }
