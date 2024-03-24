@@ -1,8 +1,8 @@
 import React from 'react'
-import Sliders from './Components/Sliders'
+import Ref from './Components/Ref'
 
 export default function App() {
   return (
-    <Sliders/>
+   <Post
   )
 }
