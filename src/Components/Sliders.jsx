@@ -3,17 +3,18 @@ import Arrow from "./Arrow";
 import Main from "./Main";
 
 export default function Sliders() {
-  const [heroes, setHeroes] = useState(null);
-  const [index, setIndex] = useState(null);
-  useEffect(async () => {
+  const [heroes, setHeroes] = useState();
+  const [index,setIndex]=useState(0)
+  useEffect( () => {
+   (async()=>{
     try {
-      const res = await fetch("http://localhost:3000/heroes");
-      const data = await res.json();
-      setHeroes(data);
-      setIndex(0);
-    } catch (error) {
-      alert(error);
-    }
+        const res = await fetch("http://localhost:3000/heroes");
+        const data = await res.json();
+        setHeroes(data);
+      } catch (error) {
+        alert(error);
+      }
+   })()
   }, []);
   const nextClick = () => {
     index === heroes.length - 1 ? setIndex(0) : setIndex(index + 1);
