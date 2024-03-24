@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { DNA } from "react-loader-spinner";
+import Toast from "./Toast";
 
 export default function Post() {
   const [postId, setPostId] = useState(1);
@@ -21,9 +22,10 @@ export default function Post() {
           className="d-flex justify-content-center  align-items-center position-fixed "
           style={{ inset: 0 }}
         >
-            <h2>{title}</h2>
+          <h2>{title}</h2>
         </div>
       )}
+      <Toast type={toast.type} message={toast.message}/>
     </div>
   );
 }
