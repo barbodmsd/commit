@@ -3,25 +3,30 @@ import Arrow from "./Arrow";
 import Main from "./Main";
 
 export default function Sliders() {
-    const [heroes,setHeroes]=useState(null)
-    const [index,setIndex]=useState(null)
-    useEffect(async()=>{
-        try {
-            const res=await fetch('http://localhost:3000/heroes')
-            const data=await res.json()
-            setHeroes(data)
-            setIndex(0)
-        } catch (error) {
-            alert(error)
-        }
-    },[])
-    
+  const [heroes, setHeroes] = useState(null);
+  const [index, setIndex] = useState(null);
+  useEffect(async () => {
+    try {
+      const res = await fetch("http://localhost:3000/heroes");
+      const data = await res.json();
+      setHeroes(data);
+      setIndex(0);
+    } catch (error) {
+      alert(error);
+    }
+  }, []);
+  const nextClick = () => {
+    index === heroes.length - 1 ? setIndex(0) : setIndex(index + 1);
+  };
+  const prevClick = () => {
+    index === 0 ? setIndex(heroes.length - 1) : setIndex(index - 1);
+  };
   return (
     <div class="slide-container">
       <div class="wrapper">
-       <Arrow direction={'prev'} handleClick={handleClick}/>
-        <Main/>
-        <Arrow direction={'next'} handleClick={handleClick}/>
+        <Arrow direction={"prev"} handleClick={prevClick} />
+        <Main hero={heroes[index]}/>
+        <Arrow direction={"next"} handleClick={nextClick} />
       </div>
     </div>
   );
