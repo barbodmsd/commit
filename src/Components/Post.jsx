@@ -10,9 +10,18 @@ export default function Post() {
   useEffect(()=>{
     (async()=>{
         try {
-            const res=await fetch('')
+            const res=await fetch(`https://jsonplaceholder.typicode.com/posts/${postId}`)
+            const data=await res.json()
+            if(data.title){
+                setTitle(data.title)
+                setLoading(false)
+                setToast({type:'success',message:`Loaded post with id ${postId} success`})
+            }else{
+                throw new Error(`post with id ${postId} not found`)
+            }
         } catch (error) {
-            
+            setLoading(false)
+            setToast({type:'error',message:error.massage})
         }
     })()
   },[postId])
@@ -23,7 +32,7 @@ export default function Post() {
   }
   return (
     <div>
-      <input type="number" placeholder="Enter number:"  handleClick={handleClick}/>
+      <input type="number" placeholder="Enter number:" value={postId} handleClick={handleClick}/>
       {loading ? (
         <div
           className="d-flex justify-content-center  align-items-center position-fixed "
