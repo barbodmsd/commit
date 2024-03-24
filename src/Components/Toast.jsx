@@ -5,7 +5,7 @@ import 'react-toastify/dist/ReactToastify.css';
 export default function Toast({ type, message }) {
   useEffect(() => {
     if (type !== "info") {
-      toast[type(message)];
+      toast[type](message);
     }
   }, []);
   return (
