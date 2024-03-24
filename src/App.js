@@ -1,8 +1,6 @@
-import React from 'react'
-import Ref from './Components/Ref'
+import React from "react";
+import Post from "./Components/Post";
 
 export default function App() {
-  return (
-   <Post
-  )
+  return <Post />;
 }
