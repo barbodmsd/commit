@@ -8,7 +8,8 @@ export default function Post() {
   const [toast, setToast] = useState({ type: "info", message: "" });
   const handleChange=(e)=>{
     setPostId(e.target.value)
-    se
+    setLoading(true)
+    setTitle('')
   }
   return <div>
     <input type="number"  />
