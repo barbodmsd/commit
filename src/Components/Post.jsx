@@ -7,29 +7,34 @@ export default function Post() {
   const [loading, setLoading] = useState();
   const [title, setTitle] = useState("");
   const [toast, setToast] = useState({ type: "info", massage: "" });
-  useEffect(()=>{
-    (async()=>{
-        try {
-            const res=await fetch(`https://jsonplaceholder.typicode.com/posts/${postId}`)
-            const data= await res.json()
-            if(data.title){
-                setLoading(false)
-                setTitle(data.title)
-                setToast({type:"success",message:`post with id ${postId} loaded`})
-            }else{
-                throw new Error(`post with id ${postId} not found`)
-            }
-        } catch (error) {
-            setLoading(false)
-            setToast({type:'error',message:error.message})
+  useEffect(() => {
+    (async () => {
+      try {
+        const res = await fetch(
+          `https://jsonplaceholder.typicode.com/posts/${postId}`
+        );
+        const data = await res.json();
+        if (data.title) {
+          setLoading(false);
+          setTitle(data.title);
+          setToast({
+            type: "success",
+            message: `post with id ${postId} loaded`,
+          });
+        } else {
+          throw new Error(`post with id ${postId} not found`);
         }
-    })()
-  },[postId])
-  const handleChange=(e)=>{
-    setPostId(e.target.value)
-    setTitle('')
-    loading(true)
-  }
+      } catch (error) {
+        setLoading(false);
+        setToast({ type: "error", message: error.message });
+      }
+    })();
+  }, [postId]);
+  const handleChange = (e) => {
+    setPostId(e.target.value);
+    setTitle("");
+    loading(true);
+  };
   return (
     <div>
       <input type="number" value={postId} onChange={handleChange} />
@@ -45,11 +50,10 @@ export default function Post() {
           className="d-flex align-items-center justify-content-center position-fixed "
           style={{ inset: 0 }}
         >
-            {title}
+          {title}
         </div>
       )}
-      <Toast/>
+      <Toast type={toast.type} message={toast.massage} />
     </div>
-    
   );
 }
