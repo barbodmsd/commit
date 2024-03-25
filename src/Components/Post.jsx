@@ -28,7 +28,13 @@ export default function Post() {
     }
     useEffect(()=>{
         (async()=>{
-            
+            try {
+                const res=await fetch(`https://jsonplaceholder.typicode.com/posts/${postId}`)
+                const data=await res.json()
+                data.title?userAction("get-post-success",data.title): new Error(`post with id ${postId} not founded`)
+            } catch (error) {
+                userAction('get-post-error')
+            }
         })()
     },[postId])
   return (
