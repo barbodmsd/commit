@@ -5,7 +5,32 @@ export default function Post() {
     const [loading,setLoading]=useState()
     const [title,setTitle]=useState('')
     const [toast,setToast]=useState({type:'info',message:''})
- 
+    const userAction=(type,payload)=>{
+        switch(type){
+            case 'get-post-request':
+                setLoading(true)
+                setTitle('')
+                setPostId(payload)
+                break;
+            case 'get-post-success':
+                setTitle(payload)
+                setLoading(false)
+                setToast({type:'success',message:`post with id ${postId} loaded`})    
+                break;
+            case 'get-post-error':
+                setToast({type:'error',message:`post with id ${postId} not founded`})    
+        }
+}
+useEffect(()=>{
+    (async()=>{
+        try {
+            const res=await fetch(``)
+            const data=await res.json()
+        } catch (error) {
+            
+        }
+    })()
+},[postId])
 
   return (
     <div>Post</div>
