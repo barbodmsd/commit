@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react'
+import { DNA } from 'react-loader-spinner'
+import Toast from './Toast'
 
 export default function Post() {
     const [postId,setPostId]=useState(1)
@@ -41,7 +43,9 @@ useEffect(()=>{
   return (
     <div>
 
-        input
+        <input type="number" value={postId} onChange={handleChange} />
+        {loading?<DNA/>:{title}}
+        <Toast type={toast.type} message={toast.message}/>
     </div>
   )
 }
