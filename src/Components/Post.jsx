@@ -7,7 +7,25 @@ export default function Post() {
     const [loading,setLoading]=useState()
     const [title,setTitle]=useState('')
     const [toast,setToast]=useState({type:'info',message:''})
-
+    const userAction=(type,payload)=>{
+        switch(type){
+            case 'get-post-request':
+                setPostId(payload)
+                setTitle('')
+                setLoading(true)
+                break;
+             case 'get-post-success':
+                setTitle(payload)
+                setLoading(false)
+                setToast({type:'success',message:`post idd with ${postId} loaded`})
+                break;
+              case 'get-post-error':
+                setLoading(false)  
+                setToast({type:'error',message:"Error in getting the post"}) 
+                break
+                default : alert('type error')
+        }
+    }
   return (
     <div>
         <input type="number" value={postId}  />
