@@ -39,7 +39,9 @@ useEffect(()=>{
         }
     })()
 },[postId])
-
+const handleChange=(e)=>{
+    userAction('get-post-request',e.target.value)
+}
   return (
     <div>
 
