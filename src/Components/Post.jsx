@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { DNA } from 'react-loader-spinner'
 import Toast from './Toast'
 
@@ -26,6 +26,11 @@ export default function Post() {
                 default : alert('type error')
         }
     }
+    useEffect(()=>{
+        (async()=>{
+            
+        })()
+    },[postId])
   return (
     <div>
         <input type="number" value={postId}  />
