@@ -46,7 +46,7 @@ const handleChange=(e)=>{
     <div>
 
         <input type="number" value={postId} onChange={handleChange} />
-        {loading?<DNA/>:{title}}
+        {loading?<DNA/>:title}
         <Toast type={toast.type} message={toast.message}/>
     </div>
   )
