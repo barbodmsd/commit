@@ -8,11 +8,20 @@ export default function Post() {
   const [title, setTitle] = useState("");
   const [toast, setToast] = useState({ type: "info", massage: "" });
   useEffect(()=>{
-    (()=>{
+    (async()=>{
         try {
-            
+            const res=await fetch(`https://jsonplaceholder.typicode.com/posts/${postId}`)
+            const data= await res.json()
+            if(data.title){
+                setLoading(false)
+                setTitle(data.title)
+                setToast({type:"success",message:`post with id ${postId} loaded`})
+            }else{
+                throw new Error(`post with id ${postId} not found`)
+            }
         } catch (error) {
-            
+            setLoading(false)
+            setToast({type:'error',message:error.message})
         }
     })()
   },[postId])
