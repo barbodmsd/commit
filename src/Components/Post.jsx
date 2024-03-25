@@ -31,15 +31,18 @@ export default function Post() {
             try {
                 const res=await fetch(`https://jsonplaceholder.typicode.com/posts/${postId}`)
                 const data=await res.json()
-                data.title?userAction("get-post-success",data.title): new Error(`post with id ${postId} not founded`)
+                data.title?userAction("get-post-success",data.title):  throw new Error(`post with id ${postId} not founded`)
             } catch (error) {
                 userAction('get-post-error')
             }
         })()
     },[postId])
+    const handleChange=(e)=>{
+        userAction('get-post-request',e.target.value)
+    }
   return (
     <div>
-        <input type="number" value={postId}  />
+        <input type="number" value={postId} onChange={handleChange} />
         {loading?<DNA/>:title}
         <Toast type={toast.type} message={toast.message}/>
     </div>
