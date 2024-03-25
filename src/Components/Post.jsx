@@ -1,11 +1,26 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { DNA } from "react-loader-spinner";
+import Toast from "./Toast";
 
 export default function Post() {
-  const [postId, setPostID] = useState(1);
+  const [postId, setPostId] = useState(1);
   const [loading, setLoading] = useState();
   const [title, setTitle] = useState("");
   const [toast, setToast] = useState({ type: "info", massage: "" });
+  useEffect(()=>{
+    (()=>{
+        try {
+            
+        } catch (error) {
+            
+        }
+    })()
+  },[postId])
+  const handleChange=(e)=>{
+    setPostId(e.target.value)
+    setTitle('')
+    loading(true)
+  }
   return (
     <div>
       <input type="number" value={postId} onChange={handleChange} />
@@ -24,6 +39,8 @@ export default function Post() {
             {title}
         </div>
       )}
+      <Toast/>
     </div>
+    
   );
 }
