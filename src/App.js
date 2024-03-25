@@ -1,8 +1,5 @@
-import React from 'react'
-import YoutubeForm from './Components/YoutubeForm'
+import React from "react";
 
 export default function App() {
-  return (
-    <YoutubeForm/>
-  )
+  return;
 }
