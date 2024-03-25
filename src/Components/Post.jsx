@@ -19,21 +19,30 @@ export default function Post() {
                 break;
             case 'get-post-error':
                 setToast({type:'error',message:`post with id ${postId} not founded`})    
+                setLoading(false)
         }
 }
 useEffect(()=>{
     (async()=>{
         try {
-            const res=await fetch(``)
+            const res=await fetch(`https://jsonplaceholder.typicode.com/posts/${postId}`)
             const data=await res.json()
+            if(data.title){
+                userAction('get-post-success',data.title)
+            }else{
+                throw new Error(`post with id ${postId} not founded`)
+            }
         } catch (error) {
-            
+            userAction('get-post-error')
         }
     })()
 },[postId])
 
   return (
-    <div>Post</div>
+    <div>
+
+        input
+    </div>
   )
 }
 
