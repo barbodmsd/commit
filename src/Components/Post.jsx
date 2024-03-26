@@ -1,15 +1,31 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import useFormFields from "../Utils/useFormFields";
 
 export default function Post() {
-  
+  const [fields,handleChange]=useFormFields()
+  const handleSubmit=async(e)=>{
+    e.preventDefault()
+    try {
+      const res=await fetch('https://fakestoreapi.com/auth/login',{
+        method:'POST',
+        headers:{
+          'Content-Type':'application/json'
+        },
+        body:JSON.stringify(fields)
+      })
+      
+    } catch (error) {
+      
+    }
+  }
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <div class="mb-3">
         <label for="exampleInputEmail1" class="form-label">
           Email address
         </label>
         <input
-          type="email"
+          type="text"
           onChange={handleChange}
           class="form-control"
           id="exampleInputEmail1"
