@@ -3,8 +3,8 @@ import { DNA } from "react-loader-spinner";
 import Toast from "./Toast";
 
 export default function Post() {
-  const [postId, setPostId] = useState();
-  const [title, setTitle] = useState();
+  const [postId, setPostId] = useState(1);
+  const [title, setTitle] = useState('');
   const [loading, setLoading] = useState();
   const [toast, setToast] = useState({ type: "info", message: "" });
   const userAction = (type, payload) => {
@@ -30,7 +30,7 @@ export default function Post() {
   useEffect(()=>{
    (async()=>{
     try {
-      const res=await fetch(``)
+      const res=await fetch(`https://jsonplaceholder.typicode.com/posts/${postId}`)
       const data=await res.json()
       if(data.title){
         userAction('get-post-success',data.title)
@@ -49,7 +49,7 @@ export default function Post() {
     <div>
       <input type="number" value={postId} onChange={handleChange} />
       {loading ? <DNA /> : title}
-      <Toast />
+      <Toast type={toast.type}  message={toast.message}/>
     </div>
   );
 }
