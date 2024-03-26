@@ -1,5 +1,12 @@
 import React from 'react'
 
+const initialState={
+  postId:1,
+  title:'',
+  loading:true,
+  toast:{type:'info',message:''}
+}
+
 export default function Post() {
   return (
     <div>Post</div>
