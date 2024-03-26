@@ -1,4 +1,6 @@
+import { Toast } from 'bootstrap'
 import React, { useState } from 'react'
+import { DNA } from 'react-loader-spinner'
 
 export default function Post() {
   const [postId,setPostId]=useState(1)
@@ -11,7 +13,11 @@ export default function Post() {
     setPostId(e.target.value)
   }
   return (
-    <div>Post</div>
+    <div>
+      <input type="number" value={postId} onChange={handleChange} />
+      {loading?<DNA/>:title}
+      <Toast type={toast.type} message={toast.message}/>
+    </div>
   )
 }
 
