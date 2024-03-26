@@ -1,8 +1,12 @@
-const [fields,setFields]=useState()
-  const handleChange=(e)=>{
-    const {target}=e
+const useFormFields = () => {
+  const [fields, setFields] = useState();
+  const handleChange = (e) => {
+    const { target } = e;
     setFields({
       ...fields,
-      [target.name]:target.value
-    })
-  }
+      [target.name]: target.value,
+    });
+  };
+  return [fields, handleChange];
+};
+export default useFormFields;
