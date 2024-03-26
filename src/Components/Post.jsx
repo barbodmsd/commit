@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import { DNA } from 'react-loader-spinner'
+import Toast from './Toast'
 
 export default function Post() {
   const [postId,setPostId]=useState()
@@ -6,7 +8,11 @@ export default function Post() {
   const [loading,setLoading]=useState()
   const [toast,setToast]=useState({type:'info',message:''})
   return (
-    <div>Post</div>
+    <div>
+      <input type="number" value={postId} onChange={handleChange} />
+      {loading?<DNA/>:title}
+      <Toast/>
+    </div>
   )
 }
 
