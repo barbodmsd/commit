@@ -1,6 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 export default function Post() {
+  const [postId,setPostId]=useState(1)
+  const [title,setTitle]=useState('')
+  const [loading,setLoading]=useState()
+  const [toast,setToast]=useState({type:'info',message:''})
+  
   return (
     <div>Post</div>
   )
