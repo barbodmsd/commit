@@ -1,4 +1,4 @@
-import React, { useReducer } from "react";
+import React, { useEffect, useReducer } from "react";
 import { DNA } from "react-loader-spinner";
 import Toast from "./Toast";
 
@@ -22,7 +22,7 @@ const userAction=(state,action)=>{
           ...state,
           title:action.payload.title,
           loading:false,
-          toast:{type:"success",message:action.payload,message}
+          toast:{type:"success",message:action.payload.message}
         }
         case 'get-post-error':
           return{
@@ -34,7 +34,24 @@ const userAction=(state,action)=>{
 }
 export default function Post() {
   const [{postId,title,loading,toast},dispatch]=useReducer(userAction,initialState)
-
+  useEffect(()=>{
+    (async()=>{
+      try {
+        const res=await fetch(``)
+        const data=await res.json();
+        if(data.title){
+          dispatch({type:'get-post-success',payload:{
+            title:data.title,
+            message:`post with id ${postId} loaded`
+          }})
+        }else{
+          throw new Error(`post with id ${postId} not founded`)
+        }
+      } catch (error) {
+        dispatch({type:'get-post-error',payload:error.message})
+      }
+    })()
+  },[postId])
   return <div>
     <input type="number" value={postId} onChange={handleChange} />
     {loading?<DNA/>:title}
