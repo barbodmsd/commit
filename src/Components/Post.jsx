@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { DNA } from "react-loader-spinner";
 import Toast from "./Toast";
 
@@ -21,12 +21,27 @@ export default function Post() {
         break;
       case "get-post-error":
         setLoading(false);
-        setToast({ type: "error", message: "" });
+        setToast({ type: "error", message: payload });
         break;
       default:
         alert("type error");
     }
   };
+  useEffect(()=>{
+   (async()=>{
+    try {
+      const res=await fetch(``)
+      const data=await res.json()
+      if(data.title){
+        userAction('get-post-success',data.title)
+      }else{
+        throw new Error(`post with id ${postId} not founded`)
+      }
+    } catch (error) {
+      userAction('get-post-error',error.message)
+    }
+   })()
+  },[postId])
   return (
     <div>
       <input type="number" value={postId} onChange={handleChange} />
