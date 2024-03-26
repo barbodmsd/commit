@@ -9,7 +9,7 @@ const initialState={
   toast:{type:'info',message:''}
 }
 const userAction=(state,action)=>{
-  switch(action,type){
+  switch(action.type){
     case 'get-post-request':
       return{
         ...state,
@@ -59,7 +59,7 @@ export default function Post() {
     <div>
       <input type="number" value={postId} onChange={handleChange} />
       {loading?<DNA/>:title}
-      <Toast/>
+      <Toast type={toast.type} message={toast.message}/>
     </div>
   )
 }
