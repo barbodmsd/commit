@@ -1,19 +1,14 @@
-import React from 'react'
+import React from "react";
 
+const initialState = {
+  postId: 1,
+  title: "",
+  loading: true,
+  toast,
+};
 export default function Post() {
-  return (
-    <div>Post</div>
-  )
+  return <div>Post</div>;
 }
-
-
-
-
-
-
-
-
-
 
 
 
