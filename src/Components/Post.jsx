@@ -1,6 +1,7 @@
-import { Toast } from 'bootstrap'
+
 import React, { useEffect, useState } from 'react'
 import { DNA } from 'react-loader-spinner'
+import Toast from './Toast'
 
 export default function Post() {
   const [postId,setPostId]=useState(1)
@@ -10,7 +11,7 @@ export default function Post() {
   useEffect(()=>{
     (async()=>{
       try {
-        const res=await fetch(``)
+        const res=await fetch(`https://jsonplaceholder.typicode.com/posts/${postId}`)
         const data=await res.json()
         if(data.title){
           setTitle(data.title)
@@ -34,7 +35,7 @@ export default function Post() {
     <div>
       <input type="number" value={postId} onChange={handleChange} />
       {loading?<DNA/>:title}
-      <Toast type={toast.type} message={toast.message}/>
+    <Toast type={toast.type} message={toast.message}/>
     </div>
   )
 }
