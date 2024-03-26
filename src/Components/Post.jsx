@@ -6,7 +6,7 @@ const initialState = {
   postId: 1,
   title: "",
   loading: true,
-  toast,
+  toast:{type:'info',message:''}
 };
 const userAction=(state,action)=>{
   switch(action.type){
@@ -37,7 +37,7 @@ export default function Post() {
   useEffect(()=>{
     (async()=>{
       try {
-        const res=await fetch(``)
+        const res=await fetch(`https://jsonplaceholder.typicode.com/posts/${postId}`)
         const data=await res.json();
         if(data.title){
           dispatch({type:'get-post-success',payload:{
