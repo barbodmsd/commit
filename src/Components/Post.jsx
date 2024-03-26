@@ -42,6 +42,9 @@ export default function Post() {
     }
    })()
   },[postId])
+  const handleChange=(e)=>{
+    userAction('get-post-request',e.target.value)
+  }
   return (
     <div>
       <input type="number" value={postId} onChange={handleChange} />
