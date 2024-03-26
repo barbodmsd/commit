@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useReducer, useState } from "react";
 import { DNA } from "react-loader-spinner";
 import Toast from "./Toast";
 
@@ -11,19 +11,25 @@ const initialState={
 const userAction = (state, action) => {
   switch (action.type) {
     case "get-post-request":
-      setTitle("");
-      setLoading(true);
-      setPostId(action,payload);
-      break;
+      return {
+        ...state,
+        title:'',
+        loading:true,
+        postId: action.payload
+      }
     case "get-post-success":
-      setTitle(action.payload);
-      setLoading(false);
-      setToast({ type: "success", message: action.payload.message});
-      break;
-    case "get-post-error":
-      setLoading(false);
-      setToast({ type: "error", message: action.payload });
-      break;
+      return{
+        ...state,
+        title:action.payload.title,
+        loading:false,
+        toast:{type:'success',message:action.payload.message}
+      }
+      case "get-post-error":
+      return{
+        ...state,
+        loading:false,
+        toast:{type:"error",message:action.payload}
+      }
     default:
       alert("type error");
   }
@@ -36,17 +42,20 @@ const [{postId,title,loading,toast},dispatch]=useReducer(userAction,initialState
       const res=await fetch(`https://jsonplaceholder.typicode.com/posts/${postId}`)
       const data=await res.json()
       if(data.title){
-        userAction('get-post-success',data.title)
+        dispatch({type:'get-post-success',payload:{
+          title:data.title,
+          message:`loaded post ${postId}`
+        }})
       }else{
         throw new Error(`post with id ${postId} not founded`)
       }
     } catch (error) {
-      userAction('get-post-error',error.message)
+      dispatch({type:'get-post-error',payload:error.message})
     }
    })()
   },[postId])
   const handleChange=(e)=>{
-    userAction('get-post-request',e.target.value)
+    dispatch({type:'get-post-request',payload:e.target.value})
   }
   return (
     <div>
