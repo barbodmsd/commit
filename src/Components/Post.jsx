@@ -1,22 +1,40 @@
-import React, { useState } from 'react'
-import { DNA } from 'react-loader-spinner'
-import Toast from './Toast'
+import React, { useState } from "react";
+import { DNA } from "react-loader-spinner";
+import Toast from "./Toast";
 
 export default function Post() {
-  const [postId,setPostId]=useState()
-  const [title,setTitle]=useState()
-  const [loading,setLoading]=useState()
-  const [toast,setToast]=useState({type:'info',message:''})
+  const [postId, setPostId] = useState();
+  const [title, setTitle] = useState();
+  const [loading, setLoading] = useState();
+  const [toast, setToast] = useState({ type: "info", message: "" });
+  const userAction = (type, payload) => {
+    switch (type) {
+      case "get-post-request":
+        setTitle("");
+        setLoading(true);
+        setPostId(payload);
+        break;
+      case "get-post-success":
+        setTitle(payload);
+        setLoading(false);
+        setToast({ type: "success", message: `post with id ${postId} loaded` });
+        break;
+      case "get-post-error":
+        setLoading(false);
+        setToast({ type: "error", message: "" });
+        break;
+      default:
+        alert("type error");
+    }
+  };
   return (
     <div>
       <input type="number" value={postId} onChange={handleChange} />
-      {loading?<DNA/>:title}
-      <Toast/>
+      {loading ? <DNA /> : title}
+      <Toast />
     </div>
-  )
+  );
 }
-
-
 
 // import React from "react";
 // import { useState } from "react";
