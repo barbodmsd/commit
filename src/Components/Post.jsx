@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useReducer } from 'react'
 
 const initialState={
   postId:1,
@@ -31,6 +31,25 @@ const userAction=(state,action)=>{
   }
 }
 export default function Post() {
+  const [{postId,title,loading,toast},dispatch]=useReducer(userAction,initialState)
+  useEffect(()=>{
+    (async()=>{
+      try {
+        const res=await fetch(`https://jsonplaceholder.typicode.com/posts/${postId}`)
+        const data=await res.json()
+        if(data.title){
+          dispatch({type:'get-post-success',payload:{
+            title:data.title,
+            message:`post with id ${postId } founded`
+          }})
+        }else{
+          throw new Error(`post with id ${postId} not founded`)
+        }
+      } catch (error) {
+        dispatch({type:'get-post-error',payload:error.message})
+      }
+    })()
+  },[postId])
   return (
     <div>Post</div>
   )
