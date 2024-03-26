@@ -1,4 +1,6 @@
 import React, { useEffect, useReducer } from 'react'
+import { DNA } from 'react-loader-spinner'
+import Toast from './Toast'
 
 const initialState={
   postId:1,
@@ -54,7 +56,11 @@ export default function Post() {
     dispatch({type:'get-post-request',payload:e.target.value})
   }
   return (
-    <div>Post</div>
+    <div>
+      <input type="number" value={postId} onChange={handleChange} />
+      {loading?<DNA/>:title}
+      <Toast/>
+    </div>
   )
 }
 
