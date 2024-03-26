@@ -8,31 +8,28 @@ const initialState={
   loading:true,
   toast:{type:'info',message:''}
 }
+const userAction = (state, action) => {
+  switch (action.type) {
+    case "get-post-request":
+      setTitle("");
+      setLoading(true);
+      setPostId(action,payload);
+      break;
+    case "get-post-success":
+      setTitle(action.payload);
+      setLoading(false);
+      setToast({ type: "success", message: action.payload.message});
+      break;
+    case "get-post-error":
+      setLoading(false);
+      setToast({ type: "error", message: action.payload });
+      break;
+    default:
+      alert("type error");
+  }
+};
 export default function Post() {
-  const [postId, setPostId] = useState(1);
-  const [title, setTitle] = useState('');
-  const [loading, setLoading] = useState();
-  const [toast, setToast] = useState({ type: "info", message: "" });
-  const userAction = (type, payload) => {
-    switch (type) {
-      case "get-post-request":
-        setTitle("");
-        setLoading(true);
-        setPostId(payload);
-        break;
-      case "get-post-success":
-        setTitle(payload);
-        setLoading(false);
-        setToast({ type: "success", message: `post with id ${postId} loaded` });
-        break;
-      case "get-post-error":
-        setLoading(false);
-        setToast({ type: "error", message: payload });
-        break;
-      default:
-        alert("type error");
-    }
-  };
+const [{postId,title,loading,toast},dispatch]=useReducer(userAction,initialState)
   useEffect(()=>{
    (async()=>{
     try {
