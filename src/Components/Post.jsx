@@ -1,68 +1,10 @@
-import React, { useEffect, useReducer } from "react";
-import { DNA } from "react-loader-spinner";
-import Toast from "./Toast";
+import React from 'react'
 
-const initialState = {
-  postId: 1,
-  title: "",
-  loading: true,
-  toast:{type:'info',message:''}
-};
-const userAction=(state,action)=>{
-  switch(action.type){
-    case 'get-post-request':
-      return{
-        ...state,
-        title:'',
-        loading:true,
-        postId:action.payload
-      }
-      case 'get-post-success':
-        return{
-          ...state,
-          title:action.payload.title,
-          loading:false,
-          toast:{type:"success",message:action.payload.message}
-        }
-        case 'get-post-error':
-          return{
-            ...state,
-            loading:false,
-            toast:{type:"error",message:action.payload}
-          }
-  }
-}
 export default function Post() {
-  const [{postId,title,loading,toast},dispatch]=useReducer(userAction,initialState)
-  useEffect(()=>{
-    (async()=>{
-      try {
-        const res=await fetch(`https://jsonplaceholder.typicode.com/posts/${postId}`)
-        const data=await res.json();
-        if(data.title){
-          dispatch({type:'get-post-success',payload:{
-            title:data.title,
-            message:`post with id ${postId} loaded`
-          }})
-        }else{
-          throw new Error(`post with id ${postId} not founded`)
-        }
-      } catch (error) {
-        dispatch({type:'get-post-error',payload:error.message})
-      }
-    })()
-  },[postId])
-  const handleChange=(e)=>{
-    dispatch({type:'get-post-request',payload:e.target.value});
-  }
-  return <div>
-    <input type="number" value={postId} onChange={handleChange} />
-    {loading?<DNA/>:title}
-    <Toast type={toast.type} message={toast.message} />
-  </div>;
+  return (
+    <div>Post</div>
+  )
 }
-
-
 
 
 
