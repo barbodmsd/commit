@@ -1,6 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 
 export default function Post() {
+  const [fields,setFields]=useState()
+  const handleChange=(e)=>{
+    const {target}=e
+    setFields({
+      ...fields,
+      [target.name]:target.value
+    })
+  }
   return (
     <form>
       <div class="mb-3">
@@ -9,6 +17,7 @@ export default function Post() {
         </label>
         <input
           type="email"
+          onChange={handleChange}
           class="form-control"
           id="exampleInputEmail1"
           aria-describedby="emailHelp"
@@ -23,6 +32,7 @@ export default function Post() {
         </label>
         <input
           type="password"
+          onChange={handleChange}
           class="form-control"
           id="exampleInputPassword1"
         />
