@@ -50,6 +50,9 @@ export default function Post() {
       }
     })()
   },[postId])
+  const handleChange=(e)=>{
+    dispatch({type:'get-post-request',payload:e.target.value})
+  }
   return (
     <div>Post</div>
   )
