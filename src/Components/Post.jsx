@@ -6,6 +6,30 @@ const initialState = {
   loading: true,
   toast,
 };
+const userAction=(state,action)=>{
+  switch(action.type){
+    case 'get-post-request':
+      return{
+        ...state,
+        title:'',
+        loading:true,
+        postId:action.payload
+      }
+      case 'get-post-success':
+        return{
+          ...state,
+          title:action.payload.title,
+          loading:false,
+          toast:{type:"success",message:action.payload,message}
+        }
+        case 'get-post-error':
+          return{
+            ...state,
+            loading:false,
+            toast:{type:"error",message:action.payload}
+          }
+  }
+}
 export default function Post() {
   return <div>Post</div>;
 }
