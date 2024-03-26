@@ -5,7 +5,11 @@ export default function Post() {
   const [title,setTitle]=useState('')
   const [loading,setLoading]=useState()
   const [toast,setToast]=useState({type:'info',message:''})
-  
+  const handleChange=(e)=>{
+    setTitle('')
+    setLoading(true)
+    setPostId(e.target.value)
+  }
   return (
     <div>Post</div>
   )
