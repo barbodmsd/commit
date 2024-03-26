@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useReducer } from "react";
+import { DNA } from "react-loader-spinner";
+import Toast from "./Toast";
 
 const initialState = {
   postId: 1,
@@ -31,7 +33,13 @@ const userAction=(state,action)=>{
   }
 }
 export default function Post() {
-  return <div>Post</div>;
+  const [{postId,title,loading,toast},dispatch]=useReducer(userAction,initialState)
+
+  return <div>
+    <input type="number" value={postId} onChange={handleChange} />
+    {loading?<DNA/>:title}
+    <Toast type={toast.type} message={toast.message} />
+  </div>;
 }
 
 
