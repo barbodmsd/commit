@@ -1,5 +1,5 @@
 import { Toast } from 'bootstrap'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { DNA } from 'react-loader-spinner'
 
 export default function Post() {
@@ -7,6 +7,24 @@ export default function Post() {
   const [title,setTitle]=useState('')
   const [loading,setLoading]=useState()
   const [toast,setToast]=useState({type:'info',message:''})
+  useEffect(()=>{
+    (async()=>{
+      try {
+        const res=await fetch(``)
+        const data=await res.json()
+        if(data.title){
+          setTitle(data.title)
+          setLoading(false)
+          setToast({type:'success',message:`post with id ${postId} loaded`})
+        }else{
+          throw new Error(`post with id ${postId} not founded`)
+        }
+      } catch (error) {
+        setLoading(false)
+        setToast({type:'error',message:error.message})
+      }
+    })()
+  },[postId])
   const handleChange=(e)=>{
     setTitle('')
     setLoading(true)
