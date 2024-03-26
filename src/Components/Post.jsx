@@ -2,6 +2,12 @@ import React, { useEffect, useState } from "react";
 import { DNA } from "react-loader-spinner";
 import Toast from "./Toast";
 
+const initialState={
+  postId:1,
+  title:'',
+  loading:true,
+  toast:{type:'info',message:''}
+}
 export default function Post() {
   const [postId, setPostId] = useState(1);
   const [title, setTitle] = useState('');
