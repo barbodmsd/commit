@@ -1,10 +1,11 @@
 import React from 'react'
-import Post from './Components/Post'
+import Form from './Components/Form'
 
 export default function App() {
   return (
     <div>
-      <Post/>
+      
+      <Form/>
     </div>
   )
 }
