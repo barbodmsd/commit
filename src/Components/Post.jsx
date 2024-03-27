@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useReducer } from 'react'
 const initialState={
     postId:1,
     loading:true,
@@ -30,6 +30,7 @@ const userAction=(state,action)=>{
     }
 }
 export default function Post() {
+    const [{postId,title,loading,toast},dispatch]=useReducer(userAction,initialState)
   return (
     <div>Post</div>
   )
