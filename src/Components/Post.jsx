@@ -1,18 +1,31 @@
 import React from "react";
+import { useState } from "react";
 
 export default function Post() {
-  const
+  const [fields, setFields] = useState();
+  const handleChange = (e) => {
+    const {target}=e
+    setFields({
+      ...fields,
+      [target.name]:target.value
+    })
+  };
+  const handleSubmit=(e)=>{
+    e.preventDefault()
+    console.log(fields)
+  }
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <div className="mb-3">
         <label htmlFor="exampleInputEmail1" className="form-label">
-         Username
+          Username
         </label>
         <input
           type="text"
           className="form-control"
           id="exampleInputEmail1"
           aria-describedby="emailHelp"
+          name="username"
         />
         <div id="emailHelp" className="form-text">
           We'll never share your email with anyone else.
@@ -25,6 +38,7 @@ export default function Post() {
         <input
           type="password"
           className="form-control"
+          name="password"
           id="exampleInputPassword1"
         />
       </div>
