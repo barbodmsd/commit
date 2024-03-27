@@ -7,7 +7,6 @@ export default function Form() {
       username: "",
       password: "",
     },
-    onSubmit:values=>console.log(values)
   });
   return (
     <form onSubmit={formik.handleSubmit}>
