@@ -20,6 +20,7 @@ export default function Post() {
           id="exampleInputEmail1"
           aria-describedby="emailHelp"
           name="username"
+          onChange={handleChange}
         />
         <div id="emailHelp" className="form-text">
           We'll never share your email with anyone else.
@@ -34,6 +35,7 @@ export default function Post() {
           className="form-control"
           name="password"
           id="exampleInputPassword1"
+          onChange={handleChange}
         />
       </div>
       <div className="mb-3 form-check">
