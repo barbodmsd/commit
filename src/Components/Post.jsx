@@ -1,15 +1,9 @@
 import React from "react";
 import { useState } from "react";
+import useFormFields from "../Utils/useFormFields";
 
 export default function Post() {
-  const [fields, setFields] = useState();
-  const handleChange = (e) => {
-    const {target}=e
-    setFields({
-      ...fields,
-      [target.name]:target.value
-    })
-  };
+ const [fields,handleChange]=useFormFields()
   const handleSubmit=(e)=>{
     e.preventDefault()
     console.log(fields)
