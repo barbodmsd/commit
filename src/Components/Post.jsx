@@ -39,8 +39,8 @@ export default function Post() {
   useEffect(() => {
     (async () => {
       try {
-        const res = await fetch(`https://fakestoreapi.com/products/${postId}`);
-        const date = await res.json();
+        const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${postId}`);
+        const data = await res.json();
         if (data.title) {
           dispatch({
             type: "get-post-success",
@@ -49,20 +49,20 @@ export default function Post() {
               message: `post with id ${postId} loaded`,
             },
           });
-        }else{
-            throw  new Error(`post with id ${postId} not founded`);
+        } else {
+          throw new Error(`post with id ${postId} not founded`);
         }
       } catch (error) {
-        dispatch({type:'get-post-error',payload: error.message});
+        dispatch({ type: "get-post-error", payload: error.message });
       }
     })();
   }, [postId]);
-  const handleChange=(e)=>{
-    dispatch({type:'get-post-request',payload: e.target.value})
-  }
+  const handleChange = (e) => {
+    dispatch({ type: "get-post-request", payload: e.target.value });
+  };
   return (
     <div>
-      <input type="number" value={postId} />
+      <input type="number" value={postId} onChange={handleChange} />
       {loading ? <DNA /> : title}
       <Toast type={toast.type} message={toast.message} />
     </div>
