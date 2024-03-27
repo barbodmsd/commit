@@ -1,6 +1,7 @@
-import React from "react";
-import Post from "./Components/Post";
+import React from 'react'
 
 export default function App() {
-  return(<Post/>)
+  return (
+    <div>App</div>
+  )
 }
