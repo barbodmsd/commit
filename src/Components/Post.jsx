@@ -1,6 +1,7 @@
 
 import React, { useReducer } from 'react'
 import { DNA } from 'react-loader-spinner'
+import Toast from './Toast'
 const initialState={
     postId:1,
     loading:true,
@@ -37,7 +38,7 @@ export default function Post() {
     <div>
         <input type="number" value={postId}  />
         {loading?<DNA/>:title}
-        <Toast
+        <Toast type={toast.type} message={toast.message}/>
     </div>
   )
 }
