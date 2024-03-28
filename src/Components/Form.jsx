@@ -1,14 +1,17 @@
 import { useFormik } from "formik";
 import React from "react";
 
+const initialValues = {
+  username: "",
+  password: "",
+};
+const onSubmit = (values) => console.log(values);
+const validate = (values) => {};
 export default function Form() {
-  const formik=useFormik({
-    initialValues:{
-      username:'',
-      password:''
-    },
-    onSubmit:(values)=>console.log(values)
-  })
+  const formik = useFormik({
+    initialValues,
+    onSubmit,
+  });
   return (
     <form onSubmit={formik.handleSubmit}>
       <div className="mb-3">
