@@ -23,6 +23,7 @@ export default function Login() {
           id="exampleInputEmail1"
           aria-describedby="emailHelp"
           name="username"
+          onChange={handleChange}
         />
         
       </div>
@@ -31,6 +32,7 @@ export default function Login() {
           Password
         </label>
         <input
+          onChange={handleChange}
           type="password"
           name="password"
           class="form-control"
