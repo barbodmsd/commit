@@ -1,45 +1,32 @@
-import { useFormik } from "formik";
 import React from "react";
 
 export default function Form() {
-  const formik = useFormik({
-    initialValues: {
-      username: "",
-      password: "",
-    },
-    onSubmit:values=>console.log(values)
-  });
   return (
-    <form onSubmit={formik.handleSubmit}>
-      <div className="mb-3">
-        <label htmlFor="exampleInputEmail1" className="form-label">
+    <form>
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">
           Username
         </label>
         <input
-          type="username"
-          className="form-control"
-          id="exampleInputEmail1"
+          type="text"
           name="username"
-          onChange={formik.handleChange}
-          value={formik.values.username}
+          class="form-control"
+          id="exampleInputEmail1"
           aria-describedby="emailHelp"
         />
       </div>
-      <div className="mb-3">
-        <label htmlFor="exampleInputPassword1" className="form-label">
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">
           Password
         </label>
         <input
           type="password"
-          onChange={formik.handleChange}
-          value={formik.values.password}
-          className="form-control"
-          id="exampleInputPassword1"
           name="password"
+          class="form-control"
+          id="exampleInputPassword1"
         />
       </div>
-
-      <button type="submit" className="btn btn-primary">
+      <button type="submit" class="btn btn-primary">
         Submit
       </button>
     </form>
