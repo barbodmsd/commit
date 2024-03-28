@@ -6,11 +6,11 @@ export default function Form() {
     initialValues:{
       username:'',
       password:''
-    }
+    },
+    onSubmit:(values)=>console.log(values)
   })
-  console.log(formik.values)
   return (
-    <form>
+    <form onSubmit={formik.handleSubmit}>
       <div className="mb-3">
         <label htmlFor="exampleInputEmail1" className="form-label">
           Username
