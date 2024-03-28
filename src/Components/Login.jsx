@@ -1,17 +1,13 @@
 import React, { useState } from "react";
+import useLoginForm from "../Utils/useLoginForm";
 
 export default function Login() {
-    const [fields,setFields]=useState()
-    const handleChange=(e)=>{
-        setFields({
-            ...fields,
-            [e.target.name]:e.target.value
-        })
-    }
-    const handleSubmit=(e)=>{
-        console.log(fields)
-        e.preventDefault()
-    }
+ const [fields,handleChange]=useLoginForm()
+ const handleSubmit=(e)=>{
+    e.preventDefault()
+    console.log(fields)
+ }
+    
   return (
     <form onSubmit={handleSubmit}>
       <div className="mb-3">
