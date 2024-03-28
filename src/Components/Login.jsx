@@ -1,6 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 
 export default function Login() {
+    const [fields,setFields]=useState()
+    const handleChange=(e)=>{
+        setFields({
+            [e.target.name]:e.target.value
+        })
+    }
   return (
     <form>
       <div class="mb-3">
