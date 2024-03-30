@@ -5,9 +5,18 @@ const initialValues = {
   username: "",
   password: "",
 };
+const validate = (values) => {
+  //return an object
+  //errors.name errors.password
+  const errors = {};
+  !errors.name && (errors.name = "required");
+  !errors.password && (errors.password = "too short");
+
+  return errors;
+};
 const onSubmit = (values) => console.log(values);
 export default function Form() {
-  const formik = useFormik({ initialValues, onSubmit });
+  const formik = useFormik({ initialValues, onSubmit, validate });
   return (
     <div>
       <form onSubmit={formik.handleSubmit}>
