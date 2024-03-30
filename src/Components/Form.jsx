@@ -2,15 +2,15 @@ import { useFormik } from "formik";
 import React from "react";
 
 const initialValues = {
-  username: "d",
+  username: "",
   password: "",
 };
 const validate = (values) => {
   let errors = {};
-  if(!errors.username){
-    errors.name='faasle'
+  if(!values.username){
+    errors.username='false'
   }
-if(!errors.password){
+if(!values.password){
   errors.password='to short'
 }
   return errors;
