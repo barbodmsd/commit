@@ -5,12 +5,10 @@ const initialValues = {
   username: "",
   password: "",
 };
-const validate = (values) => {
-  //return an object
-  //errors.name errors.password
-  const errors = {};
-  !errors.name && (errors.name = "required");
-  !errors.password && (errors.password = "too short");
+const validaye = (values) => {
+  let errors = {};
+  !errors.username && (errors.username = "required");
+  !errors.password && (errors.password = "required");
 
   return errors;
 };
