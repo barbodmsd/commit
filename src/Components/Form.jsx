@@ -1,12 +1,13 @@
 import { useFormik } from "formik";
 import React from "react";
 
-const initialValue={
-  username:'',
-  password:''
-}
+const initialValue = {
+  username: "",
+  password: "",
+};
+const onSubmit = (values) => console.log(values);
 export default function Form() {
-  const formik=useFormik({initialValues})
+  const formik = useFormik({ initialValue, onSubmit });
   return (
     <div>
       For
@@ -16,8 +17,8 @@ export default function Form() {
             Username
           </label>
           <input
-          name="username"
-          onChange={formik.handleChange}
+            name="username"
+            onChange={formik.handleChange}
             type="text"
             class="form-control"
             id="exampleInputEmail1"
@@ -32,8 +33,8 @@ export default function Form() {
             Password
           </label>
           <input
-          name="password"
-          onChange={handleChange}
+            name="password"
+            onChange={handleChange}
             type="password"
             class="form-control"
             id="exampleInputPassword1"
