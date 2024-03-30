@@ -1,19 +1,11 @@
 import React, { useState } from "react";
+import useForm from "./Utils/useForm";
 
 export default function Login() {
-  const [fields, setFields] = useState();
-  const handleChange = (e) => {
-    
-    const { target } = e;
-    setFields({
-      ...fields,
-      [target.name]: target.value,
-    });
-  };
+  const [fields,handleChange]=useForm()
   const handleSubmit=(e)=>{
     e.preventDefault();
     console.log(fields)
-
   }
   return (
     <form onSubmit={handleSubmit}>
