@@ -2,14 +2,17 @@ import { useFormik } from "formik";
 import React from "react";
 
 const initialValues = {
-  username: "",
+  username: "d",
   password: "",
 };
-const validaye = (values) => {
+const validate = (values) => {
   let errors = {};
-  !errors.username && (errors.username = "required");
-  !errors.password && (errors.password = "required");
-
+  if(!errors.username){
+    errors.name='faasle'
+  }
+if(!errors.password){
+  errors.password='to short'
+}
   return errors;
 };
 const onSubmit = (values) => console.log(values);
@@ -31,10 +34,8 @@ export default function Form() {
             id="exampleInputEmail1"
             aria-describedby="emailHelp"
           />
-          <div id="emailHelp" className="form-text">
-            We'll never share your email with anyone else.
+          <div>{formik.errors.username&&<div className="message">{formik.errors.username}</div>}</div>
           </div>
-        </div>
         <div className="mb-3">
           <label htmlFor="exampleInputPassword1" className="form-label">
             Password
@@ -47,17 +48,9 @@ export default function Form() {
             className="form-control"
             id="exampleInputPassword1"
           />
+          {formik.errors.password&&<div className="message">{formik.errors.password}</div>}
         </div>
-        <div className="mb-3 form-check">
-          <input
-            type="checkbox"
-            className="form-check-input"
-            id="exampleCheck1 "
-          />
-          <label className="form-check-label" htmlFor="exampleCheck1">
-            Check me out
-          </label>
-        </div>
+        
         <button type="submit" className="btn btn-primary">
           Submit
         </button>
