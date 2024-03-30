@@ -1,7 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 export default function Login() {
-    const 
+    const [fields,setFields]=useState()
+    const handleSubmit=(e)=>{
+        e.preventDefault()
+        const {target}=e
+        setFields({
+            ...fields,
+            [target.name]:target.value
+        })
+    }
   return (
     <form>
   <div class="mb-3">
