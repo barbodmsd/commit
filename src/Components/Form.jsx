@@ -5,13 +5,13 @@ const initialValues = {
   password: "",
 };
 const onSubmit = (values) => console.log(formik.values);
-const validate=values=>{
-  let errors={}
-  !values.username&&(errors.username='Username is required')
-  !values.password&&(errors.password='Password is required')
+const validate = (values) => {
+  let errors = {};
+  !values.username && (errors.username = "Username is required");
+  !values.password && (errors.password = "Password is required");
 
-  return errors
-}
+  return errors;
+};
 export default function Form() {
   const formik = useFormik({ initialValues, onSubmit, validate });
   return (
@@ -22,6 +22,9 @@ export default function Form() {
         </label>
         <input
           type="text"
+          name="username"
+          onChange={formik.handleChange}
+          value={formik.values.username}
           class="form-control"
           id="exampleInputEmail1"
           aria-describedby="emailHelp"
@@ -32,6 +35,9 @@ export default function Form() {
           Password
         </label>
         <input
+        name="password"
+        onChange={formik.handleChange}
+        value={formik.values.password}
           type="password"
           class="form-control"
           id="exampleInputPassword1"
