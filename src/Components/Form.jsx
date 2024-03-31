@@ -4,7 +4,10 @@ const initialValues = {
   username: "",
   password: "",
 };
-const onSubmit = (values) => console.log(values);
+const onSubmit = (values) => {
+  console.log(values)
+  
+};
 const validate = (values) => {
   let errors = {};
   !values.username && (errors.username = "Username is required");
