@@ -5,6 +5,12 @@ const initialValues = {
   password: "",
 };
 const onSubmit = (values) => console.log(formik.values);
+const validate=values=>{
+  let errors={}
+
+
+  return errors
+}
 export default function Form() {
   const formik = useFormik({ initialValues, onSubmit, validate });
   return (
