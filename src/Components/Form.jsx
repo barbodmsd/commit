@@ -7,7 +7,8 @@ const initialValues = {
 const onSubmit = (values) => console.log(formik.values);
 const validate=values=>{
   let errors={}
-
+  !values.username&&(errors.username='Username is required')
+  !values.password&&(errors.password='Password is required')
 
   return errors
 }
