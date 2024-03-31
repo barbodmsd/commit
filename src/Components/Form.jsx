@@ -15,7 +15,7 @@ const validate = (values) => {
 export default function Form() {
   const formik = useFormik({ initialValues, onSubmit, validate });
   return (
-    <form>
+    <form onSubmit={formik.handleSubmit}>
       <div class="mb-3">
         <label for="exampleInputEmail1" class="form-label">
           Username
