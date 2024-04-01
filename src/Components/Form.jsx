@@ -8,7 +8,7 @@ const initialValues = {
 const onSubmit = (values) => console.log(values);
 
 const validationSchema=Yup.object({
-  username:Yup.string().required('username empty'),
+  username:Yup.string('s').required('username empty'),
   email:Yup.string().email( 'invalid email').required("email empty")
 })
 export default function Form() {
@@ -23,9 +23,10 @@ export default function Form() {
           </label>
           <input
             name="username"
-            onChange={formik.handleChange}
-            value={formik.values.username}
-            onBlur={formik.handleBlur}
+            // onChange={formik.handleChange}
+            // value={formik.values.username}
+            // onBlur={formik.handleBlur}
+            {...formik.getFieldProps('username')}
             type="text"
             className="form-control"
             id="exampleInputEmail1"
