@@ -1,19 +1,23 @@
 import { useFormik } from "formik";
 import React from "react";
-
+import * as Yup from "yup";
 const initialValues = {
   username: "",
-  password: "",
+  email: "",
 };
 const onSubmit = (values) => console.log(values);
-const validate = (values) => {
-  const errors = {};
-  !values.username && (errors.username = "Username is required.");
-  !values.password && (errors.password = "Password is required.");
-  return errors;
-};
+// const validate = (values) => {
+//   const errors = {};
+//   !values.username && (errors.username = "Username is required.");
+//   !values.password && (errors.password = "Password is required.");
+//   return errors;
+// };
+const validationSchema = Yup.object({
+  username: Yup.string().required("empty"),
+  email: Yup.string().email("error format").required("empty"),
+});
 export default function Form() {
-  const formik = useFormik({ initialValues, onSubmit, validate });
+  const formik = useFormik({ initialValues, onSubmit, validationSchema });
   console.log(formik.touched);
   return (
     <div>
@@ -43,10 +47,10 @@ export default function Form() {
             Password
           </label>
           <input
-            name="password"
+            name="email"
             onChange={formik.handleChange}
             value={formik.values.password}
-            type="password"
+            type="email"
             className="form-control"
             onBlur={formik.handleBlur}
             id="exampleInputPassword1"
