@@ -29,10 +29,7 @@ export default function Form() {
           aria-describedby="emailHelp"
           {...formik.getFieldProps("email")}
         />
-        <div id="emailHelp" className="form-text">
-          We'll never share your email with anyone else.
-        </div>
-      </div>
+        {(formik.errors.email&&formik.touched.email)&&<div className="message">{formik.errors.email}</div>}
       <div className="mb-3">
         <label htmlFor="exampleInputPassword1" className="form-label">
           username
