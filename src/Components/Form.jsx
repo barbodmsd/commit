@@ -1,21 +1,21 @@
 import { useFormik } from "formik";
 import React from "react";
-import * as Yup from 'yup'
-const initialValues={
-  username:'',
-  email:''
-}
-const validationSchema= Yup.object({
-  username:Yup.string().required('Username is required'),
-  email:Yup.string().email('invalid format').required('email is required')
-})
-const onSubmit=values=>console.log(values)
+import * as Yup from "yup";
+const initialValues = {
+  username: "",
+  email: "",
+};
+const validationSchema = Yup.object({
+  username: Yup.string().required("Username is required"),
+  email: Yup.string().email("invalid format").required("email is required"),
+});
+const onSubmit = (values) => console.log(values);
 export default function Form() {
-  const formik=useFormik({
+  const formik = useFormik({
     initialValues,
     onSubmit,
-    validationSchema
-  })
+    validationSchema,
+  });
   return (
     <form>
       <div className="mb-3">
@@ -27,7 +27,7 @@ export default function Form() {
           className="form-control"
           id="exampleInputEmail1"
           aria-describedby="emailHelp"
-          {...formik.getFieldProps('email')}
+          {...formik.getFieldProps("email")}
         />
         <div id="emailHelp" className="form-text">
           We'll never share your email with anyone else.
@@ -42,14 +42,9 @@ export default function Form() {
           className="form-control"
           id="exampleInputPassword1"
           name="username"
-          {...formik.getFieldProps('username')}
+          {...formik.getFieldProps("username")}
         />
-      </div>
-      <div className="mb-3 form-check">
-        <input type="checkbox" className="form-check-input" id="exampleCheck1" />
-        <label className="form-check-label" htmlFor="exampleCheck1">
-          Check me out
-        </label>
+        {(formik.errors.username&&formik.touched.username)&&<div className="message">{formik.errors.username}</div>}
       </div>
       <button type="submit" className="btn btn-primary">
         Submit
