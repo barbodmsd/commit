@@ -1,4 +1,8 @@
 import React from "react";
+const initialValues={
+  username:'',
+  email:''
+}
 
 export default function Form() {
   return (
