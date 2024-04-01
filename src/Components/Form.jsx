@@ -4,6 +4,7 @@ const initialValues={
   username:'',
   password:''
 }
+const onSubmit=(values)=>console.log(values)
 export default function Form() {
   return (
     <div>Form</div>
