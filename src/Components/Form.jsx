@@ -16,8 +16,9 @@ export default function Form() {
     onSubmit,
     validationSchema,
   });
+  console.log(formik.touched)
   return (
-    <form>
+    <form onSubmit={formik.handleSubmit}>
       <div className="mb-3">
         <label htmlFor="exampleInputEmail1" className="form-label">
           Email address
@@ -30,6 +31,7 @@ export default function Form() {
           {...formik.getFieldProps("email")}
         />
         {(formik.errors.email&&formik.touched.email)&&<div className="message">{formik.errors.email}</div>}
+        </div>
       <div className="mb-3">
         <label htmlFor="exampleInputPassword1" className="form-label">
           username
