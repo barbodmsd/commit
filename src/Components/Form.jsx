@@ -14,7 +14,7 @@ const validate = (values) => {
 };
 export default function Form() {
   const formik = useFormik({ initialValues, onSubmit, validate });
-  console.log(formik.touched)
+  console.log(formik.touched);
   return (
     <div>
       <form onSubmit={formik.handleSubmit}>
@@ -33,7 +33,7 @@ export default function Form() {
             onBlur={formik.handleBlur}
           />
           <div>
-            {formik.errors.username && (
+            {formik.touched.username && formik.errors.username && (
               <div className="message">{formik.errors.username}</div>
             )}
           </div>
@@ -51,7 +51,7 @@ export default function Form() {
             onBlur={formik.handleBlur}
             id="exampleInputPassword1"
           />
-          {formik.errors.password && (
+          {formik.touched.password && formik.errors.password && (
             <div className="message">{formik.errors.password}</div>
           )}
         </div>
