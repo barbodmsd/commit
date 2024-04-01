@@ -14,6 +14,7 @@ const validate = (values) => {
 };
 export default function Form() {
   const formik = useFormik({ initialValues, onSubmit, validate });
+  console.log(formik.touched)
   return (
     <div>
       <form onSubmit={formik.handleSubmit}>
@@ -29,6 +30,7 @@ export default function Form() {
             className="form-control"
             id="exampleInputEmail1"
             aria-describedby="emailHelp"
+            onBlur={formik.handleBlur}
           />
           <div>
             {formik.errors.username && (
@@ -46,6 +48,7 @@ export default function Form() {
             value={formik.values.password}
             type="password"
             className="form-control"
+            onBlur={formik.handleBlur}
             id="exampleInputPassword1"
           />
           {formik.errors.password && (
