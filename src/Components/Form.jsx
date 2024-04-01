@@ -1,10 +1,16 @@
+import { useFormik } from "formik";
 import React from "react";
 const initialValues={
   username:'',
   email:''
 }
-
+const onSubmit=values=>console.log(values)
 export default function Form() {
+  const formik=useFormik({
+    initialValues,
+    onSubmit,
+    validationSchema
+  })
   return (
     <form>
       <div class="mb-3">
