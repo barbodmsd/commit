@@ -25,11 +25,11 @@ export default function Form() {
             name="username"
             onChange={formik.handleChange}
             value={formik.values.username}
+            onBlur={formik.handleBlur}
             type="text"
             className="form-control"
             id="exampleInputEmail1"
             aria-describedby="emailHelp"
-            onBlur={formik.handleBlur}
           />
           <div>
             {formik.touched.username && formik.errors.username && (
@@ -43,11 +43,12 @@ export default function Form() {
           </label>
           <input
             name="email"
-            onChange={formik.handleChange}
-            value={formik.values.email}
+            // onChange={formik.handleChange}
+            {...formik.getFieldProps('email')}
+            // value={formik.values.email}
+            // onBlur={formik.handleBlur}
             type="email"
             className="form-control"
-            onBlur={formik.handleBlur}
             id="exampleInputPassword1"
           />
           {formik.touched.email && formik.errors.email && (
