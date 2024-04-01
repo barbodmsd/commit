@@ -1,3 +1,4 @@
+import { useFormik } from 'formik'
 import React from 'react'
 
 const initialValues={
@@ -5,7 +6,14 @@ const initialValues={
   password:''
 }
 const onSubmit=(values)=>console.log(values)
+const validate=(validate)=>{
+  const errors={}
+  !values.username&&(errors.username='Username is required.')
+  !values.password&&(errors.password='Password is required.')
+  return errors
+}
 export default function Form() {
+  const formik=useFormik({initialValues,onSubmit,validate})
   return (
     <div>Form</div>
   )
