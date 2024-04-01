@@ -27,6 +27,7 @@ export default function Form() {
           className="form-control"
           id="exampleInputEmail1"
           aria-describedby="emailHelp"
+          {...formik.getFieldProps('email')}
         />
         <div id="emailHelp" className="form-text">
           We'll never share your email with anyone else.
@@ -34,12 +35,14 @@ export default function Form() {
       </div>
       <div className="mb-3">
         <label htmlFor="exampleInputPassword1" className="form-label">
-          Password
+          username
         </label>
         <input
-          type="password"
+          type="text"
           className="form-control"
           id="exampleInputPassword1"
+          name="username"
+          {...formik.getFieldProps('username')}
         />
       </div>
       <div className="mb-3 form-check">
