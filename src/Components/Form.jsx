@@ -1,5 +1,9 @@
 import React from 'react'
 
+const initialValues={
+  username:'',
+  password:''
+}
 export default function Form() {
   return (
     <div>Form</div>
