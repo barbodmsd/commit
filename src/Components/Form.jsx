@@ -1,18 +1,18 @@
 import { useFormik } from "formik";
 import React from "react";
-import * as  Yup from "yup";
-const initialValues={
-  username:'',
-  email:''
-}
-const onSubmit=values=>console.log(values)
-const validationSchema=Yup.object({
-  username:Yup.string().required('username is required'),
-  email:Yup.string().email('invalid format').required('Email is required')
-})
+import * as Yup from "yup";
+const initialValues = {
+  username: "",
+  email: "",
+};
+const onSubmit = (values) => console.log(values);
+const validationSchema = Yup.object({
+  username: Yup.string().required("username is required"),
+  email: Yup.string().email("invalid format").required("Email is required"),
+});
 export default function Form() {
-  const formik=useFormik({initialValues,onSubmit,validationSchema})
-
+  const formik = useFormik({ initialValues, onSubmit, validationSchema });
+console.log(formik.touched)
   return (
     <form>
       <div class="mb-3">
@@ -24,6 +24,8 @@ export default function Form() {
           class="form-control"
           id="exampleInputEmail1"
           aria-describedby="emailHelp"
+          name="email"
+          {...formik.getFieldProps('email')}
         />
         <div id="emailHelp" class="form-text">
           We'll never share your email with anyone else.
@@ -34,9 +36,11 @@ export default function Form() {
           Password
         </label>
         <input
-          type="password"
+          type="username"
           class="form-control"
           id="exampleInputPassword1"
+          name="username"
+          {...formik.getFieldProps('username')}
         />
       </div>
       <div class="mb-3 form-check">
