@@ -15,42 +15,44 @@ export default function Form() {
   console.log(formik.touched);
   return (
     <form>
-      <div class="mb-3">
-        <label for="exampleInputEmail1" class="form-label">
+      <div className="mb-3">
+        <label htmlFor="exampleInputEmail1" className="form-label">
           Email address
         </label>
         <input
           type="email"
-          class="form-control"
+          className="form-control"
           id="exampleInputEmail1"
           aria-describedby="emailHelp"
           name="email"
           {...formik.getFieldProps("email")}
         />
-        {(formik.touched.email&&formik.errors.email)&&<div className="message">{formik.errors.email}</div>}
+        {formik.touched.email && formik.errors.email && (
+          <div classNameName="message">{formik.errors.email}</div>
+        )}
       </div>
-      <div class="mb-3">
-        <label for="exampleInputPassword1" class="form-label">
+      <div className="mb-3">
+        <label htmlFor="exampleInputPassword1" className="form-label">
           Password
         </label>
         <input
           type="username"
-          class="form-control"
+          className="form-control"
           id="exampleInputPassword1"
           name="username"
           {...formik.getFieldProps("username")}
         />
         {formik.touched.username && formik.errors.username && (
-          <div className="message">{formik.errors.username}</div>
+          <div classNameName="message">{formik.errors.username}</div>
         )}
       </div>
-      <div class="mb-3 form-check">
-        <input type="checkbox" class="form-check-input" id="exampleCheck1" />
-        <label class="form-check-label" for="exampleCheck1">
+      <div className="mb-3 form-check">
+        <input type="checkbox" className="form-check-input" id="exampleCheck1" />
+        <label className="form-check-label" htmlFor="exampleCheck1">
           Check me out
         </label>
       </div>
-      <button type="submit" class="btn btn-primary">
+      <button type="submit" className="btn btn-primary">
         Submit
       </button>
     </form>
@@ -78,33 +80,33 @@ export default function Form() {
 //   console.log(formik.touched)
 //   return (
 //     <form onSubmit={formik.handleSubmit}>
-//       <div className="mb-3">
-//         <label htmlFor="exampleInputEmail1" className="form-label">
+//       <div classNameName="mb-3">
+//         <label htmlhtmlFor="exampleInputEmail1" classNameName="form-label">
 //           Email address
 //         </label>
 //         <input
 //           type="email"
-//           className="form-control"
+//           classNameName="form-control"
 //           id="exampleInputEmail1"
 //           aria-describedby="emailHelp"
 //           {...formik.getFieldProps("email")}
 //         />
-//         {(formik.errors.email&&formik.touched.email)&&<div className="message">{formik.errors.email}</div>}
+//         {(formik.errors.email&&formik.touched.email)&&<div classNameName="message">{formik.errors.email}</div>}
 //         </div>
-//       <div className="mb-3">
-//         <label htmlFor="exampleInputPassword1" className="form-label">
+//       <div classNameName="mb-3">
+//         <label htmlhtmlFor="exampleInputPassword1" classNameName="form-label">
 //           username
 //         </label>
 //         <input
 //           type="text"
-//           className="form-control"
+//           classNameName="form-control"
 //           id="exampleInputPassword1"
 //           name="username"
 //           {...formik.getFieldProps("username")}
 //         />
-//         {(formik.errors.username&&formik.touched.username)&&<div className="message">{formik.errors.username}</div>}
+//         {(formik.errors.username&&formik.touched.username)&&<div classNameName="message">{formik.errors.username}</div>}
 //       </div>
-//       <button type="submit" className="btn btn-primary">
+//       <button type="submit" classNameName="btn btn-primary">
 //         Submit
 //       </button>
 //     </form>
