@@ -6,7 +6,10 @@ const initialValues={
   email:''
 }
 const onSubmit=values=>console.log(values)
-const validationSchema=Yup.object({})
+const validationSchema=Yup.object({
+  username:Yup.string().required('username is required'),
+  email:Yup.string().email('invalid format').required('Email is required')
+})
 export default function Form() {
   const formik=useFormik({initialValues,onSubmit,validationSchema})
 
