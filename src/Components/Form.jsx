@@ -1,10 +1,12 @@
 import { useFormik } from "formik";
 import React from "react";
+import * as  Yup from "yup";
 const initialValues={
   username:'',
   email:''
 }
 const onSubmit=values=>console.log(values)
+const validationSchema=Yup.object({})
 export default function Form() {
   const formik=useFormik({initialValues,onSubmit,validationSchema})
 
