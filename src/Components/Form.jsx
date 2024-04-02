@@ -12,7 +12,7 @@ const validationSchema = Yup.object({
 });
 export default function Form() {
   const formik = useFormik({ initialValues, onSubmit, validationSchema });
-console.log(formik.touched)
+  console.log(formik.touched);
   return (
     <form>
       <div class="mb-3">
@@ -25,11 +25,9 @@ console.log(formik.touched)
           id="exampleInputEmail1"
           aria-describedby="emailHelp"
           name="email"
-          {...formik.getFieldProps('email')}
+          {...formik.getFieldProps("email")}
         />
-        <div id="emailHelp" class="form-text">
-          We'll never share your email with anyone else.
-        </div>
+        {(formik.touched.email&&formik.errors.email)&&<div className="message">{formik.errors.email}</div>}
       </div>
       <div class="mb-3">
         <label for="exampleInputPassword1" class="form-label">
@@ -40,9 +38,11 @@ console.log(formik.touched)
           class="form-control"
           id="exampleInputPassword1"
           name="username"
-          {...formik.getFieldProps('username')}
+          {...formik.getFieldProps("username")}
         />
-        {(formik.touched.username&&formik.errors.username)&&<div className="message">{formik.errors.username}</div>}
+        {formik.touched.username && formik.errors.username && (
+          <div className="message">{formik.errors.username}</div>
+        )}
       </div>
       <div class="mb-3 form-check">
         <input type="checkbox" class="form-check-input" id="exampleCheck1" />
