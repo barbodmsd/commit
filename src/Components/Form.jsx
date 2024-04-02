@@ -42,6 +42,7 @@ console.log(formik.touched)
           name="username"
           {...formik.getFieldProps('username')}
         />
+        {(formik.touched.username&&formik.errors.username)&&<div className="message">{formik.errors.username}</div>}
       </div>
       <div class="mb-3 form-check">
         <input type="checkbox" class="form-check-input" id="exampleCheck1" />
