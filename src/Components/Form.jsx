@@ -12,7 +12,7 @@ const validationSchema = Yup.object({
 });
 export default function Form() {
   const formik = useFormik({ initialValues, onSubmit, validationSchema });
-  console.log(formik.touched);
+  console.log(formik.touched)
   return (
     <form onSubmit={formik.handleSubmit}>
       <div className="mb-3">
