@@ -5,7 +5,7 @@ const initialValues = {
   username: "",
   email: "",
 };
-const onSubmit = (values) => console.log(values)
+const onSubmit = (values) => console.log(values);
 const validationSchema = Yup.object({
   username: Yup.string().required("username is required"),
   email: Yup.string().email("invalid format").required("Email is required"),
