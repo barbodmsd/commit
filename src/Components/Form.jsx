@@ -25,6 +25,7 @@ export default function Form() {
           id="exampleInputEmail1"
           aria-describedby="emailHelp"
           name="email"
+          {}
         />
         {formik.touched.email && formik.errors.email && (
           <div className="message">{formik.errors.email}</div>
