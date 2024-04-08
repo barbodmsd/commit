@@ -15,15 +15,15 @@ export default function Form() {
   console.log(formik.touched);
   return (
     <form>
-      <div class="mb-3">
-        <label for="exampleInputEmail1" class="form-label">
+      <div className="mb-3">
+        <label htmlFor="exampleInputEmail1" className="form-label">
           Username
         </label>
         <input
           name="username"
           {...formik.getFieldProps("username")}
           type="text"
-          class="form-control"
+          className="form-control"
           id="exampleInputEmail1"
           aria-describedby="emailHelp"
         />
@@ -31,15 +31,15 @@ export default function Form() {
           <div className="message">{formik.errors.username}</div>
         )}
       </div>
-      <div class="mb-3">
-        <label for="exampleInputPassword1" class="form-label">
+      <div className="mb-3">
+        <label htmlFor="exampleInputPassword1" className="form-label">
           E-mail
         </label>
         <input
           name="email"
           {...formik.getFieldProps("email")}
           type="email"
-          class="form-control"
+          className="form-control"
           id="exampleInputPassword1"
         />
         {formik.touched.email && formik.errors.email && (
@@ -47,7 +47,7 @@ export default function Form() {
         )}
       </div>
 
-      <button type="submit" class="btn btn-primary">
+      <button type="submit" className="btn btn-primary">
         Submit
       </button>
     </form>
@@ -76,7 +76,7 @@ export default function Form() {
 //   return (
 //     <form onSubmit={formik.handleSubmit}>
 //       <div classNameName="mb-3">
-//         <label htmlhtmlFor="exampleInputEmail1" classNameName="form-label">
+//         <label htmlhtmlhtmlFor="exampleInputEmail1" classNameName="form-label">
 //           Email address
 //         </label>
 //         <input
@@ -89,7 +89,7 @@ export default function Form() {
 //         {(formik.errors.email&&formik.touched.email)&&<div classNameName="message">{formik.errors.email}</div>}
 //         </div>
 //       <div classNameName="mb-3">
-//         <label htmlhtmlFor="exampleInputPassword1" classNameName="form-label">
+//         <label htmlhtmlhtmlFor="exampleInputPassword1" classNameName="form-label">
 //           username
 //         </label>
 //         <input
