@@ -1,63 +1,35 @@
-import { useFormik } from "formik";
-import React from "react";
-import * as Yup from "yup";
-const initialValues = {
-  username: "",
-  email: "",
-};
-const onSubmit = (values) => console.log(values)
-const validationSchema = Yup.object({
-  username: Yup.string().required("username is required"),
-  email: Yup.string().email("invalid format").required("Email is required"),
-});
+import React from 'react'
+
 export default function Form() {
-  const formik = useFormik({ initialValues, onSubmit, validationSchema });
-  console.log(formik.touched)
   return (
-    <form onSubmit={formik.handleSubmit}>
-      <div className="mb-3">
-        <label htmlFor="exampleInputEmail1" className="form-label">
-          Email address
-        </label>
-        <input
-          type="email"
-          className="form-control"
-          id="exampleInputEmail1"
-          aria-describedby="emailHelp"
-          name="email"
-          {...formik.getFieldProps('email')}
-        />
-        {formik.touched.email && formik.errors.email && (
-          <div className="message">{formik.errors.email}</div>
-        )}
-      </div>
-      <div className="mb-3">
-        <label htmlFor="exampleInputPassword1" className="form-label">
-          Password
-        </label>
-        <input
-          type="username"
-          className="form-control"
-          id="exampleInputPassword1"
-          name="username"
-          {...formik.getFieldProps("username")}
-        />
-        {formik.touched.username && formik.errors.username && (
-          <div className="message">{formik.errors.username}</div>
-        )}
-      </div>
-      <div className="mb-3 form-check">
-        <input type="checkbox" className="form-check-input" id="exampleCheck1" />
-        <label className="form-check-label" htmlFor="exampleCheck1">
-          Check me out
-        </label>
-      </div>
-      <button type="submit" className="btn btn-primary">
-        Submit
-      </button>
-    </form>
-  );
+    <div>Form</div>
+  )
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // import { useFormik } from "formik";
 // import React from "react";
