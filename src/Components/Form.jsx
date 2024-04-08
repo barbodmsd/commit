@@ -14,7 +14,7 @@ export default function Form() {
   const formik = useFormik({ initialValues, onSubmit, validationSchema });
   console.log(formik.touched);
   return (
-    <form>
+    <form onSubmit={formik.handleSubmit}>
       <div className="mb-3">
         <label htmlFor="exampleInputEmail1" className="form-label">
           Username
