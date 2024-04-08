@@ -1,14 +1,17 @@
 import { useFormik } from "formik";
 import React from "react";
 import * as Yup from "yup";
-const initialValues={
-  username:'',
-  email:''
-}
-const onSubmit=(values)=>console.log(values)
-
+const initialValues = {
+  username: "",
+  email: "",
+};
+const onSubmit = (values) => console.log(values);
+const validationSchema = Yup.object({
+  username: Yup.string().required("Username is required"),
+  email: Yup.string().email("invalid format").required("email is required"),
+});
 export default function Form() {
-  const formik=useFormik({initialValues,onSubmit,validationSchema})
+  const formik = useFormik({ initialValues, onSubmit, validationSchema });
   return (
     <form>
       <div class="mb-3">
