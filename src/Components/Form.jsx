@@ -27,14 +27,17 @@ export default function Form() {
           id="exampleInputEmail1"
           aria-describedby="emailHelp"
         />
+        {formik.touched.username && formik.errors.username && (
+          <div className="message">{formik.errors.username}</div>
+        )}
       </div>
       <div class="mb-3">
         <label for="exampleInputPassword1" class="form-label">
           E-mail
         </label>
         <input
-        name="email"
-        {...formik.getFieldProps("email")}
+          name="email"
+          {...formik.getFieldProps("email")}
           type="email"
           class="form-control"
           id="exampleInputPassword1"
