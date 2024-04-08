@@ -42,6 +42,9 @@ export default function Form() {
           class="form-control"
           id="exampleInputPassword1"
         />
+        {formik.touched.email && formik.errors.email && (
+          <div className="message">{formik.errors.email}</div>
+        )}
       </div>
 
       <button type="submit" class="btn btn-primary">
