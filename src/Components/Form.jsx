@@ -12,14 +12,15 @@ const validationSchema = Yup.object({
 });
 export default function Form() {
   const formik = useFormik({ initialValues, onSubmit, validationSchema });
+  console.log(formik.touched)
   return (
     <form>
       <div class="mb-3">
         <label for="exampleInputEmail1" class="form-label">
-          Email address
+          username
         </label>
         <input
-          type="email"
+          type="text"
           class="form-control"
           id="exampleInputEmail1"
           aria-describedby="emailHelp"
