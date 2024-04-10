@@ -27,6 +27,11 @@ export default function Post() {
       setToast({ type: "error", message: error.message });
     }
   }, [postId]);
+  const handleChange=(e)=>{
+    setPostId(e.target.value)
+    setLoading(true)
+    setTitle('')
+  }
   return (
     <div>
       <input type="number" onChange={handleChange} />
