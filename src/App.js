@@ -5,7 +5,9 @@ import Login from "./Components/Login";
 
 export default function App() {
   const [token, setToken] = useState();
-  const handleToken = (tk) => setToken(tk);
+  const handleToken = (tk) => {
+    setToken(tk)
+  };
   return (
     <>
       <AuthContext.Provider value={{token,handleToken}}>

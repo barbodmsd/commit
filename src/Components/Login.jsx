@@ -13,7 +13,7 @@ export default function Login() {
                 headers:{'content-type': 'application/json'},
                 body:JSON.stringify(fields)
             })
-            const data=res.json()
+            const data= await res.json()
             alert('login successfully')
             handleToken(data.token)
         } catch (error) {
