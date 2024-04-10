@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import AuthContext from "./Utils/authContext";
 import Main from "./Components/Main";
+import Login from "./Components/Login";
 
 export default function App() {
   const [token,setToken]=useState(null)
@@ -10,7 +11,7 @@ export default function App() {
   return (
     <>
       <AuthContext.Provider value={{token,handleToken}}>
-        <Main />
+        {token?<Main/>:<Login/>}
       </AuthContext.Provider>
     </>
   );
