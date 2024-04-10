@@ -1,7 +1,14 @@
-import React from 'react'
+import React from "react";
+import AuthContext from "./Utils/authContext";
 
 export default function App() {
   return (
-    <div>App</div>
-  )
+    <>
+      <AuthContext.Provider>
+
+
+
+      </AuthContext.Provider>
+    </>
+  );
 }
