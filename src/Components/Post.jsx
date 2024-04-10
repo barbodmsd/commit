@@ -21,6 +21,7 @@ export default function Post() {
         } catch (error) {
             setLoading(false)
             setToast({type:'error',message:error.message})
+            
         }
     },[postId])
   return (
