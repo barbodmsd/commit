@@ -11,7 +11,7 @@ export default function Post() {
   useEffect(()=>{
     (async()=>{
         try {
-            const res=await fetch(``)
+            const res=await fetch(`https://jsonplaceholder.typicode.com/posts/${postId}`)
             const data=await res.json()
             if(data.title){
                 setLoading(false)
