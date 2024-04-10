@@ -57,7 +57,7 @@ export default function Post() {
   };
   return (
     <div>
-      <input type="number" onChange={handleChange} />
+      <input type="number" value={postId} onChange={handleChange} />
       {loading ? <DNA /> : title}
       <Toast type={toast.type} message={toast.message} />
     </div>
