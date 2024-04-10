@@ -4,8 +4,8 @@ import Toast from './Toast'
 
 const initialState={
     postId:1,
-    loading,
-    title,
+    loading:true,
+    title:'',
     toast:{type:'info',message:''}
 }
 const userAction=(state,action)=>{
@@ -39,7 +39,7 @@ export default function Post() {
     useEffect(()=>{
         (async()=>{
             try {
-                const res=await fetch(``)
+                const res=await fetch(`https://jsonplaceholder.typicode.com/posts/${postId}`)
                 const data=await res.json()
                 if(data.title){
                     dispatch({type:'get-post-success',payload:{title:data.title,message:`post with id ${postId} founded`}})
