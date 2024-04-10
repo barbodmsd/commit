@@ -9,23 +9,25 @@ export default function Post() {
   const [title, setTitle] = useState();
   const [toast, setToast] = useState({ type: "info", message: "" });
 
-  useEffect(async () => {
+  useEffect( () => {
+   (async()=>{
     try {
-      const res = await fetch(
-        `https://jsonplaceholder.typicode.com/posts/${postId}`
-      );
-      const data = await res.json();
-      if (data.title) {
+        const res = await fetch(
+          `https://jsonplaceholder.typicode.com/posts/${postId}`
+        );
+        const data = await res.json();
+        if (data.title) {
+          setLoading(false);
+          setTitle(data.title);
+          setToast({ type: "success", message: `post with id ${postId} loaded` });
+        } else {
+          throw new Error(`post with id ${postId} not founded `);
+        }
+      } catch (error) {
         setLoading(false);
-        setTitle(data.title);
-        setToast({ type: "success", message: `post with id ${postId} loaded` });
-      } else {
-        throw new Error(`post with id ${postId} not founded `);
+        setToast({ type: "error", message: error.message });
       }
-    } catch (error) {
-      setLoading(false);
-      setToast({ type: "error", message: error.message });
-    }
+   })()
   }, [postId]);
   const handleChange=(e)=>{
     setPostId(e.target.value)
