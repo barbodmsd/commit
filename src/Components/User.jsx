@@ -1,7 +1,12 @@
-import React from 'react'
+import React, { useContext } from "react";
+import AuthContext from "../Utils/authContext";
 
 export default function User() {
+  const { token } = useContext(AuthContext);
+
   return (
-    <div>User</div>
-  )
+    <div>
+      <h5>User token: {token}</h5>
+    </div>
+  );
 }
