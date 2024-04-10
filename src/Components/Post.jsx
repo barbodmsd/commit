@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react'
+import React, { useEffect, useReducer } from 'react'
 import { DNA } from 'react-loader-spinner'
 import Toast from './Toast'
 
@@ -36,6 +36,21 @@ const userAction=(state,action)=>{
 }
 export default function Post() {
     const [{postId,title,loading,toast},dispatch]=useReducer(userAction,initialState)
+    useEffect(()=>{
+        (async()=>{
+            try {
+                const res=await fetch(``)
+                const data=await res.json()
+                if(data.title){
+                    dispatch({type:'get-post-success',payload:{title:data.title,message:`post with id ${postId} founded`}})
+                }else{
+                    throw new Error(`post with id ${postId} not founded`)
+                }
+            } catch (error) {
+                
+            }
+        })()
+    },[postId])
   return (
     <div>
         <input type="number" onChange={handleChange} value={postId} />
