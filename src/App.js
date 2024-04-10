@@ -5,8 +5,8 @@ import Main from "./Components/Main";
 export default function App() {
   return (
     <>
-      <AuthContext.Provider value={5}>
-        <Main/>
+      <AuthContext.Provider>
+        <Main />
       </AuthContext.Provider>
     </>
   );
