@@ -51,6 +51,9 @@ export default function Post() {
             }
         })()
     },[postId])
+    const handleChange=(e)=>{
+        dispatch({type:'get-post-request',payload:e.target.value})
+    }
   return (
     <div>
         <input type="number" onChange={handleChange} value={postId} />
