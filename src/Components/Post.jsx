@@ -47,7 +47,7 @@ export default function Post() {
                     throw new Error(`post with id ${postId} not founded`)
                 }
             } catch (error) {
-                
+                dispatch({type:'get-post-error',payload:error.message})
             }
         })()
     },[postId])
