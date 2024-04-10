@@ -1,4 +1,10 @@
-.message{
-  color: red;
-  font-size: 25px;
+main{
+  min-height: 400px;
+}
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style: none;
 }
