@@ -1,6 +1,19 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
+import AuthContext from "../utils/authContext";
 
 export default function Login() {
+  const {setToken}=useContext(AuthContext)
+  useEffect(()=>{
+    (async()=>{
+      try {
+        const res=await fetch('')
+        const data=await res.json()
+        setToken(data.token)
+      } catch (error) {
+        alert(error)
+      }
+    })()
+  },[])
   return (
     <form>
       <div class="mb-3">
