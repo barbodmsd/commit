@@ -1,10 +1,7 @@
 import React from 'react'
 
-export default function ProductDetails
-() {
+export default function ProductDetails() {
   return (
-    <div>ProductDetails
-        
-    </div>
+    <div>ProductDetails</div>
   )
 }
