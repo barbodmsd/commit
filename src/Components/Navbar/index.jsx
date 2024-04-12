@@ -20,9 +20,7 @@ export default function Navbar() {
         <li className="nav-item">
           <Link className="nav-link active" aria-current="page" to="/login-register">Login/Register</Link>
         </li>
-        <li className="nav-item">
-          <Link className="nav-link active" aria-current="page" to="/hjsbdhasd">Home</Link>
-        </li>
+        
         
      </ul>
     </div>
