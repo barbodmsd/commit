@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import AuthContext from "./utils/authContext";
 import Main from "./Components/Main";
+import Login from "./Components/Login";
 
 export default function App() {
+  const [token,setToken]=useState(58)
   return (
     <>
-      <AuthContext.Provider value={85}>
-        <Main />
+      <AuthContext.Provider value={{token,setToken}}>
+        {token?<Main/>:<Login/>}
       </AuthContext.Provider>
     </>
   );
