@@ -6,7 +6,11 @@ export default function Login() {
   useEffect(()=>{
     (async()=>{
       try {
-        const res=await fetch('')
+        const res=await fetch('https://fakestoreapi.com/auth/login',{
+          method:'POST',
+          headers:{'content-type':'application/json'},
+          body:JSON.stringify()
+        })
         const data=await res.json()
         setToken(data.token)
       } catch (error) {

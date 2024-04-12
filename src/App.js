@@ -4,7 +4,7 @@ import Main from "./Components/Main";
 import Login from "./Components/Login";
 
 export default function App() {
-  const [token,setToken]=useState(58)
+  const [token,setToken]=useState()
   return (
     <>
       <AuthContext.Provider value={{token,setToken}}>
