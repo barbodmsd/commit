@@ -1,8 +1,22 @@
-import React from "react";
-
+import React, { useContext } from "react";
+import useForm from '../utils/useForm'
+import AuthContext from "../utils/authContext";
 export default function Login() {
+    const [fields,handleChange]=useForm()
+    const {setToken}=useContext(AuthContext)
+    const handleSubmit=async(e)=>{
+        e.preventDefault()
+        try {
+            const res=await fetch('') 
+            const data=await res.json()
+            setToken(data.token)
+        } catch (error) {
+            alert(error)
+        }
+
+    }
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <div class="mb-3">
         <label for="exampleInputEmail1" class="form-label">
           Username
