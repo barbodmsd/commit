@@ -20,7 +20,6 @@ export default function App() {
           <Route path="/product-details" element={<ProductDetails/>}/>
           <Route path="*" element={<NotFound/>}/>
         </Routes>
-
       </main>
       <Footer />
     </>
