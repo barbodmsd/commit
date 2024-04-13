@@ -1,19 +1,20 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
+import './Card.css'
 export default function Card({ products }) {
   const items = products?.map((e, index) => (
-    <div class="card" style="width: 18rem;">
+    <div className="card" >
       <img
         src={e.attributes["image-urls"][0]}
-        class="card-img-top"
+        className="card-img-top"
         alt={e.attributes.name}
       />
-      <div class="card-body">
-        <h5 class="card-title">{e.attributes.name}</h5>
-        <p class="card-text">
+      <div className="card-body">
+        <h5 className="card-title">{e.attributes.name}</h5>
+        <p className="card-text">
           Price : {e.attributes.price/100}
         </p>
-        <Link to={`/product-details/${id}`} class="btn btn-primary">
+        <Link to={`/product-details/${e.id}`} className="btn btn-primary">
           Go somewhere
         </Link>
       </div>
