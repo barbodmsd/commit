@@ -16,7 +16,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Home />} exact />
           <Route path="/products" element={<Products />} />
-          <Route path="/products-details/:id/" element={<ProductDetails />} />
+          <Route path="/product-details/:id/" element={<ProductDetails />} />
           <Route path="/login-register" element={<LoginRegister />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
