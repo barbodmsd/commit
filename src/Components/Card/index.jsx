@@ -14,7 +14,7 @@ export default function Card({ products }) {
         <p className="card-text">
           Price : {e.attributes.price/100}
         </p>
-        <Link to={`/product-details/${e.id}`} className="btn btn-primary">
+        <Link to={`/product-details/${e.id}/${e.attributes.name.replaceAll('','-')}`} className="btn btn-primary">
           Go somewhere
         </Link>
       </div>
