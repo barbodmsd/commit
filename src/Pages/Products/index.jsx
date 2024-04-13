@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Card from "../../Components/Card";
+import { DNA } from "react-loader-spinner";
 
 export default function Products() {
   const [products, setProducts] = useState();
@@ -24,6 +25,26 @@ export default function Products() {
       }
     })();
   }, []);
-  const items=products?.map((e,index)=><Card key={index} img={e.}/>)
-  return <div>Products</div>;
+  const items = products?.map((e, index) => (
+    <Card
+      key={index}
+      img={e.attributes["image-urls"][0]}
+      name={e.name}
+      id={e.id}
+    />
+  ));
+  return (
+    <>
+      {products ? (
+        <div className="d-flex gap-3 justify-content-center ">{items}</div>
+      ) : (
+        <div
+          className="d-flex justify-content-center align-content-center "
+          style={{ inset: "0px" }}
+        >
+          <DNA />
+        </div>
+      )}
+    </>
+  );
 }

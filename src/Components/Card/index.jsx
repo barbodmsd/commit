@@ -1,18 +1,18 @@
 import React from "react";
-
+import './card.css' 
+import { Link } from "react-router-dom";
 export default function Card({ img,name,price,id }) {
   return (
     <div class="card">
-      <img src="..." class="card-img-top" alt="..." />
+      <img src={img} class="card-img-top" alt={name} />
       <div class="card-body">
-        <h5 class="card-title">Card title</h5>
+        <h5 class="card-title">{name}</h5>
         <p class="card-text">
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
+         Price : {price}
         </p>
-        <a href="#" class="btn btn-primary">
+        <Link to={`/product-details/${id}`} class="btn btn-primary">
           Go somewhere
-        </a>
+        </Link>
       </div>
     </div>
   );
