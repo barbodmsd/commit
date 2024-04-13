@@ -31,16 +31,17 @@ export default function Products() {
       img={e.attributes["image-urls"][0]}
       name={e.attributes.name}
       id={e.id}
+      price={e.attributes.price}
     />
   ));
   return (
     <>
       {products ? (
-        <div className="d-flex gap-3 justify-content-center ">{items}</div>
+        <div className="d-flex flex-wrap  gap-3 justify-content-center ">{items}</div>
       ) : (
         <div
-          className="d-flex justify-content-center align-content-center "
-          style={{ inset: 0 }}
+          className="d-flex justify-content-center align-content-center position-fixed  "
+          style={{ inset:0  }}
         >
           <DNA />
         </div>

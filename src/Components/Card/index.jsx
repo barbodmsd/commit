@@ -1,16 +1,17 @@
 import React from "react";
-import './card.css' 
+import style from './card.module.css'
 import { Link } from "react-router-dom";
-export default function Card({ img,name,price,id }) {
+export default function Card({ products}) {
+    const 
   return (
-    <div class="card">
-      <img src={img} class="card-img-top" alt={name} />
-      <div class="card-body">
-        <h5 class="card-title">{name}</h5>
-        <p class="card-text">
-         Price : {price}
+    <div className={`card ${style.productCard}`}>
+      <img src={img} className="card-img-top" alt={name} />
+      <div className="card-body">
+        <h5 className="card-title">{name}</h5>
+        <p className="card-text">
+         Price : {price/100}
         </p>
-        <Link to={`/product-details/${id}`} class="btn btn-primary">
+        <Link to={`/product-details/${id}`} className="btn btn-primary">
           Go somewhere
         </Link>
       </div>
