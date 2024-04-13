@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { DNA } from "react-loader-spinner";
 import { useNavigate, useParams } from "react-router-dom";
 
 export default function ProductDetails() {
@@ -20,8 +21,24 @@ export default function ProductDetails() {
           }
         );
         const data = await res.json();
+        setProduct(data.data)
       } catch (error) {}
     })();
   }, [id]);
-  return <div>ProductDetails</div>;
+  return <>
+  {product?<div class="card mb-3" >
+  <div class="row g-0">
+    <div class="col-md-4">
+      <img src="..." class="img-fluid rounded-start" alt="..."/>
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+        <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+      </div>
+    </div>
+  </div>
+</div>:<div className="d-flex justify-content-center align-content-center position-fixed " style={{inset:0}}><DNA/></div>}
+  </div>;
 }
