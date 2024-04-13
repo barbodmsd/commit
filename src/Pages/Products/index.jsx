@@ -29,7 +29,7 @@ export default function Products() {
     <Card
       key={index}
       img={e.attributes["image-urls"][0]}
-      name={e.name}
+      name={e.attributes.name}
       id={e.id}
     />
   ));
@@ -40,7 +40,7 @@ export default function Products() {
       ) : (
         <div
           className="d-flex justify-content-center align-content-center "
-          style={{ inset: "0px" }}
+          style={{ inset: 0 }}
         >
           <DNA />
         </div>
