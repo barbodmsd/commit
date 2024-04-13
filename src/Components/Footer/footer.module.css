@@ -1,0 +1,10 @@
+.footerContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    background-color: gainsboro;
+}
+.footerContainer h2{
+    font-size: 2rem;
+}
