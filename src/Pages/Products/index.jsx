@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import Card from "../../Components/Card";
 
 export default function Products() {
   const [products, setProducts] = useState();
@@ -17,11 +18,12 @@ export default function Products() {
           }
         );
         const data = await res.json();
-        setProducts(data.data)
+        setProducts(data.data);
       } catch (error) {
         alert("fetching error");
       }
     })();
   }, []);
+  const items=products?.map((e,index)=><Card key={index} img={e.}/>)
   return <div>Products</div>;
 }
