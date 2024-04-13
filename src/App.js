@@ -5,6 +5,8 @@ import { Route, Routes } from "react-router-dom";
 import Products from "./Pages/Products";
 import ProductDetails from "./Pages/ProductDetails";
 import NotFound from "./Pages/NotFound";
+import LoginRegister from "./Pages/LoginRegister";
+import Home from "./Pages/Home";
 
 export default function App() {
   return (
