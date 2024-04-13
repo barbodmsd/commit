@@ -23,5 +23,13 @@ export default function Products() {
       }
     })();
   }, []);
-  return <div>Products</div>;
+  return (
+    <>
+      {products ? (
+        <div className="d-flex justify-content-center align-content-center flex-wrap gap-3"></div>
+      ) : (
+        <div></div>
+      )}
+    </>
+  );
 }
