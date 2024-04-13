@@ -21,24 +21,46 @@ export default function ProductDetails() {
           }
         );
         const data = await res.json();
-        setProduct(data.data)
-      } catch (error) {}
+        setProduct(data.data);
+      } catch (error) {
+        alert(error)
+      }
     })();
   }, [id]);
-  return <>
-  {product?<div class="card mb-3" >
-  <div class="row g-0">
-    <div class="col-md-4">
-      <img src="..." class="img-fluid rounded-start" alt="..."/>
-    </div>
-    <div class="col-md-8">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-        <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
-      </div>
-    </div>
-  </div>
-</div>:<div className="d-flex justify-content-center align-content-center position-fixed " style={{inset:0}}><DNA/></div>}
-  </div>;
+  return (
+    <>
+      {product ? (
+        <div class="card mb-3 w-75 shadow-lg mx-auto my-2  product-details">
+          <div class="row g-0">
+            <div class="col-md-4">
+              <img src={product.attributes['image-urls'][0]} class="img-fluid rounded-start" alt="..." />
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title">{product.attributes.name}</h5>
+                <p class="card-text">
+                  {product.attributes.description}
+                </p>
+                <p class="card-text">
+                  Price : {product.attributes.price}
+                </p>
+                <p class="card-text">
+                  <small class="text-body-secondary">
+                    Last updated 3 mins ago
+                  </small>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      ) : (
+        <div
+          className="d-flex justify-content-center align-content-center position-fixed "
+          style={{ inset: 0 }}
+        >
+          <DNA />
+        </div>
+      )}
+    </>
+  );
 }
