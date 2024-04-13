@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import Card from "../../Components/Card";
+import { DNA } from "react-loader-spinner";
 
 export default function Products() {
   const [products, setProducts] = useState();
@@ -26,9 +28,14 @@ export default function Products() {
   return (
     <>
       {products ? (
-        <div className="d-flex justify-content-center align-content-center flex-wrap gap-3"></div>
+        <div className="d-flex justify-content-center align-content-center flex-wrap gap-3">
+          <Card products={products} />
+        </div>
       ) : (
-        <div></div>
+        <div
+          className="d-flex justify-content-center align-content-center position-fixed "
+          style={{ inset: 0 }}
+        ><DNA/></div>
       )}
     </>
   );
