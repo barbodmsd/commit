@@ -21,7 +21,7 @@ export default function ProductDetails() {
           }
         );
         const data = await res.json();
-        setProduct(data.data);
+        data.data?setProduct(data.data):navigate("/not-found")
       } catch (error) {
         alert(error)
       }
