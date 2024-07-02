@@ -6,13 +6,18 @@ import jwt from "jsonwebtoken";
 import HandleError from "../Utils/handleError.js";
 import fs from "fs";
 import { __dirname } from "../app.js";
+import Category from "../Models/categoryMd.js";
 
 export const createBlog = catchAsync(async (req, res) => {
   const image = req?.file?.filename || "";
   const token = req?.headers?.authorization?.split(" ")[1];
+  const { categoryId } = req?.body;
   const { id } = jwt.verify(token, process.env.SECRET_KEY);
   const newBlog = await Blog.create({ ...req.body, image, owner: id });
   await User.findByIdAndUpdate(id, { $push: { blogId: newBlog._id } });
+  await Category.findByIdAndUpdate(categoryId, {
+    $push: { blogId: newBlog._id },
+  });
   return res.status(201).json({
     status: "success",
     data: newBlog,
@@ -45,6 +50,8 @@ export const getBlogById = catchAsync(async (req, res, next) => {
 });
 
 export const deleteBlog = catchAsync(async (req, res) => {
+  const token = req?.headers?.authorization?.split(" ")[1];
+  const { id } = jwt.verify(token, process.env.SECRET_KEY);
   const deletedBlog = await Blog.findByIdAndDelete(req.params.id);
   if (deletedBlog.image) {
     fs.unlinkSync(__dirname + "/Public/" + deletedBlog.image);
