@@ -10,6 +10,10 @@ const commentSchema=new mongoose.Schema({
     blogId:{
         type:mongoose.Schema.ObjectId,
         ref:'Blog'
+    },
+    userId:{
+        type:mongoose.Schema.ObjectId,
+        ref:'Blog'
     }
 },{timestamps:true})
 

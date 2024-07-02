@@ -34,7 +34,6 @@ export const getUserById = catchAsync(async (req, res, next) => {
 export const deleteUser = catchAsync(async (req, res, next) => {
   const token = req?.headers?.authorization?.split(" ")[1];
   const { id, role } = jwt.verify(token, process.env.SECRET_KEY);
-
   if (role == "admin" || id == req.params.id) {
     const deletedUser = await User.findByIdAndDelete(req.params.id);
     if (deletedUser.image) {
@@ -52,6 +51,7 @@ export const deleteUser = catchAsync(async (req, res, next) => {
 export const updateUser = catchAsync(async (req, res, next) => {
   const token = req?.headers?.authorization?.split(" ")[1];
   const { id, role } = jwt.verify(token, process.env.SECRET_KEY);
+const {id:idBody='',role:roleBody='',...others}=req.body
   const image = req?.file?.filename || "";
   const { imageBody } = req?.body;
   let updatedUser;
@@ -61,7 +61,7 @@ export const updateUser = catchAsync(async (req, res, next) => {
     if (image) {
       updatedUser = await User.findByIdAndUpdate(
         id,
-        { ...req.body, image },
+        { ...others, image },
         { new: true, runValidators: true }
       );
       if (oldUser.image) {
@@ -70,14 +70,14 @@ export const updateUser = catchAsync(async (req, res, next) => {
     } else if (imageBody == "delete") {
       updatedUser = await User.findByIdAndUpdate(
         id,
-        { ...req.body, image: "" },
+        { ...others, image: "" },
         { new: true, runValidators: true }
       );
       if (oldUser.image) {
         fs.unlinkSync(__dirname + "/Public/" + oldUser.image);
       }
     } else {
-      updatedUser = await User.findByIdAndUpdate(id, req.body, {
+      updatedUser = await User.findByIdAndUpdate(id, others, {
         new: true,
         runValidators: true,
       });

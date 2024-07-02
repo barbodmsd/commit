@@ -1,6 +1,6 @@
-import jst from "jsonwebtoken";
+import jwt from "jsonwebtoken";
 
-const isLogin = (rew, res, next) => {
+const isLogin = (req, res, next) => {
   try {
     const token = req?.headers?.authorization?.split(" ")[1];
     const decode = jwt.verify(token, process.env.SECRET_KEY);

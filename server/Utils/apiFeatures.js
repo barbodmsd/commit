@@ -5,7 +5,7 @@ class ApiFeatures{
     }
     filters(){
         const queryObj={...this.queryString}
-        const fieldsItems=['page','sort','limit','fields']
+        const fieldsItems=['page','sort','limit','fields','populate']
         for (const key in fieldsItems) {
             delete queryObj[key];
         }
