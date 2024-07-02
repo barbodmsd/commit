@@ -30,6 +30,13 @@ class ApiFeatures{
         }
         return this
     }
+    populate(){
+        if(this.queryString.populate){
+            const populateBy=this.queryString.populate.split(',').join(' ')
+            this.query=this.query.populate(populateBy)
+        }
+        return this
+    }
     paginate(){
         const page=this.queryString.page*1 || 1;
         let limit=this.queryString.limit*1||20;
