@@ -50,8 +50,6 @@ export const getBlogById = catchAsync(async (req, res, next) => {
 });
 
 export const deleteBlog = catchAsync(async (req, res) => {
-  const token = req?.headers?.authorization?.split(" ")[1];
-  const { id } = jwt.verify(token, process.env.SECRET_KEY);
   const deletedBlog = await Blog.findByIdAndDelete(req.params.id);
   if (deletedBlog.image) {
     fs.unlinkSync(__dirname + "/Public/" + deletedBlog.image);
