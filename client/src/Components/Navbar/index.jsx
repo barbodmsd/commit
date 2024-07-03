@@ -5,8 +5,10 @@ import { Link } from "react-router-dom";
 import { logout } from "../../Store/Slices/authSlice";
 
 export default function Navbar() {
-  const { token } = useSelector((state) => state.persistedReducer.authSlice);
-  const dispatch=useDispatch()
+  const { token, user } = useSelector(
+    (state) => state.persistedReducer.authSlice
+  );
+  const dispatch = useDispatch();
   return (
     <>
       <Stack
@@ -24,7 +26,9 @@ export default function Navbar() {
             <Button sx={{ color: "white" }}>Home</Button>
           </Link>
           {token ? (
-            <Button sx={{ color: "white" }} onClick={()=>dispatch(logout())}>Log Out</Button>
+            <Button sx={{ color: "white" }} onClick={() => dispatch(logout())}>
+              Log Out
+            </Button>
           ) : (
             <Link to={"/auth"}>
               <Button sx={{ color: "white" }}>Auth</Button>
@@ -33,9 +37,16 @@ export default function Navbar() {
         </Stack>
         {/* right side */}
         <Stack direction='row' alignItems={"center"}>
-          <Link to={"/admin-dashboard"}>
-            <Button sx={{ color: "white" }}>Panel</Button>
-          </Link>
+          {user?.role === "admin" && (
+            <Link to={"/admin-dashboard"}>
+              <Button sx={{ color: "white" }}>dashboard</Button>
+            </Link>
+          )}
+          {user?.role === "user" && (
+            <Link to={"/user"}>
+              <Button sx={{ color: "white" }}>Panel</Button>
+            </Link>
+          )}
         </Stack>
       </Stack>
     </>
