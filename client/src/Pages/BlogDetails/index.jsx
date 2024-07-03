@@ -1,4 +1,4 @@
-import { Stack } from "@mui/material";
+import { Button, Stack, Box, Input } from "@mui/material";
 import Avatar from "@mui/material/Avatar";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
@@ -8,6 +8,7 @@ import Typography from "@mui/material/Typography";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import fetchData from "../../Utils/fetchData";
+import { useSelector } from "react-redux";
 
 export const BlogComments = ({ title, message, img }) => {
   return (
@@ -35,8 +36,10 @@ export const BlogComments = ({ title, message, img }) => {
 };
 
 export default function BlogDetails() {
+    const {token}=useSelector(state=>state.persistedReducer.authSlice)
   const [blog, setBlog] = useState();
   const [comments, setComments] = useState();
+  const [message, setMessage] = useState();
   const { id } = useParams();
   useEffect(() => {
     (async () => {
@@ -49,7 +52,18 @@ export default function BlogDetails() {
         console.log(error);
       }
     })();
-  }, []);
+  }, [message]);
+  const handleSubmit = async () => {
+    try {
+      const res = await fetchData(`comments/${id}`, {
+        method: "POST",
+        headers: { "content-type": "application/json" ,authorization:`Bearer ${token}`},
+        body: JSON.stringify({ message }),
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
   const items = comments?.map((e, index) => (
     <BlogComments
       key={index}
@@ -89,7 +103,22 @@ export default function BlogDetails() {
         <Stack gap={"5px"} alignItems={"center"} justifyContent={"center"}>
           {items}
         </Stack>
-        
+        <Stack
+          direction={"row"}
+          component='form' onSubmit={handleSubmit} noValidate
+          >
+          <Stack>
+            <Input
+            type='text'
+              onChange={(e) => setMessage(e.target.value)}
+              width={"500px"}
+              cols={70}
+            />
+          </Stack>
+          <Box>
+            <Button type={'submit'} variant={"contained"}>comment</Button>
+          </Box>
+        </Stack>
       </Stack>
     </>
   );
