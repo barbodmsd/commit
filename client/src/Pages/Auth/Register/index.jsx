@@ -9,13 +9,12 @@ import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 import fetchData from "../../../Utils/fetchData";
 import useForm from "../../../Utils/useForm";
-import AuthContext from "../../../Utils/authContext";
-import { useContext, useState } from "react";
+import { login } from "../../../Store/Slices/authSlice";
+import { useDispatch } from "react-redux";
 
 export default function Register({ handlePageType }) {
-  const { user, setUser } = useContext(AuthContext);
   const [fields, handleChange] = useForm();
-  
+  const dispatch = useDispatch();
   const handleSubmit = async (e) => {
     e.preventDefault();
     const res = await fetchData("auth/register", {
@@ -23,13 +22,7 @@ export default function Register({ handlePageType }) {
       headers: { "content-type": "application/json" },
       body: JSON.stringify(fields),
     });
-    setUser({
-      username: res.data.user.username,
-      email: res.data.user.email,
-      role: res.data.user.role,
-      image: res.data.user.image,
-      token: res.data.token,
-    });
+    dispatch(login(res.data));
   };
   return (
     <Container component='main' maxWidth='xs'>

@@ -1,8 +1,12 @@
+import { Button, Stack } from "@mui/material";
 import React from "react";
-import { Stack, Button } from "@mui/material";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { logout } from "../../Store/Slices/authSlice";
 
 export default function Navbar() {
+  const { token } = useSelector((state) => state.authSlice);
+  const dispatch=useDispatch()
   return (
     <>
       <Stack
@@ -19,9 +23,13 @@ export default function Navbar() {
           <Link to={"/"}>
             <Button sx={{ color: "white" }}>Home</Button>
           </Link>
-          <Link to={"/auth"}>
-            <Button sx={{ color: "white" }}>Auth</Button>
-          </Link>
+          {token ? (
+            <Button sx={{ color: "white" }} onClick={()=>dispatch(logout())}>Log Out</Button>
+          ) : (
+            <Link to={"/auth"}>
+              <Button sx={{ color: "white" }}>Auth</Button>
+            </Link>
+          )}
         </Stack>
         {/* right side */}
         <Stack direction='row' alignItems={"center"}>

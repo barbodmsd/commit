@@ -1,22 +1,11 @@
-
-import React, { useContext, useEffect } from 'react'
-import AuthContext from '../../Utils/authContext'
+import React from 'react'
+import { useSelector } from 'react-redux'
 
 export default function Home() {
-  const user=useContext(AuthContext)
+  const {user}=useSelector(state=>state.authSlice)
   console.log(user)
-  // useEffect(()=>{
-  //   (async()=>{
-  //     try {
-  //       const res=await fetch('')
-  //       const data=await res.json()
-
-  //     } catch (error) {
-  //       console.log(error)
-  //     }
-  //   })()
-  // },[])
   return (
     <div>Home</div>
   )
 }
+
