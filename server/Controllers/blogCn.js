@@ -39,7 +39,7 @@ export const getAllBlogs = catchAsync(async (req, res) => {
 });
 
 export const getBlogById = catchAsync(async (req, res, next) => {
-  const blog = await Blog.findById(req.params.id);
+  const blog = await Blog.findById(req.params.id).populate('categoryId')
   if (!blog) {
     return next(new HandleError("Invalid id", 404));
   }

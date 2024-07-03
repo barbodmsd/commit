@@ -16,7 +16,7 @@ export default function Home() {
       }
     })();
   }, []);
-  console.log(blogs);
+
   const items = blogs?.map((e, index) => (
     <BlogCard
       key={index}
