@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { logout } from "../../Store/Slices/authSlice";
 
 export default function Navbar() {
-  const { token } = useSelector((state) => state.authSlice);
+  const { token } = useSelector((state) => state.persistedReducer.authSlice);
   const dispatch=useDispatch()
   return (
     <>

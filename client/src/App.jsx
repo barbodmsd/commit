@@ -9,7 +9,7 @@ import Home from "./Pages/Home";
 import User from "./Pages/User";
 
 export default function App() {
-  const { token } = useSelector((state) => state.authSlice);
+  const { token } = useSelector((state) => state.persistedReducer.authSlice);
   return (
     <>
       <Navbar />
