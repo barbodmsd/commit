@@ -22,7 +22,7 @@ export const createComment = catchAsync(async (req, res, next) => {
 
 export const getBlogComments = catchAsync(async (req, res) => {
   const blogId = req.params.id;
-  const comments = await Comment.find({ blogId }).populate("blogId");
+  const comments = await Comment.find({ blogId }).populate('userId')
   return res.status(200).json({
     status: "success",
     data: comments,

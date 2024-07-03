@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import fetchData from "../../Utils/fetchData";
-import BlogCard from "../../Components/BlogCard";
+import BlogCard from "./BlogCard";
 import { Stack, Typography } from "@mui/material";
 
 export default function Home() {

@@ -13,7 +13,7 @@ const commentSchema=new mongoose.Schema({
     },
     userId:{
         type:mongoose.Schema.ObjectId,
-        ref:'Blog'
+        ref:'User'
     }
 },{timestamps:true})
 
