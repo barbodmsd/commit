@@ -5,6 +5,7 @@ const authRoute=express.Router()
 
 authRoute.route('/register').post(upload.single('file'),register)
 authRoute.route('/').post(login)
+// authRoute.route('/send-email').post(sendEmail)
 
 
 export default authRoute
