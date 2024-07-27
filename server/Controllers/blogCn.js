@@ -31,6 +31,7 @@ export const getAllBlogs = catchAsync(async (req, res) => {
     .limitFields()
     .paginate()
     .populate();
+    console.log(req.query)
   const blogs = await features.query;
   return res.status(201).json({
     status: "success",
