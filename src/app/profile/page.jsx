@@ -1,7 +1,10 @@
 import React from 'react'
+import Slider from './slider'
 
 export default function Profile() {
   return (
-    <div>Profile</div>
+    <>
+    <Slider/>
+    </>
   )
 }
