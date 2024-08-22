@@ -5,3 +5,6 @@ export default function Blog() {
     <div>Blog</div>
   )
 }
+export const metadata={
+  title:"runo"
+}
