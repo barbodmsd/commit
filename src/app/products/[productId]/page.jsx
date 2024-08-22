@@ -5,3 +5,9 @@ export default function ProductDetails({params}) {
     <div>ProductDetails {params.productId}</div>
   )
 }
+
+export const generateMetadata=({params})=>{
+  return {
+    title:`product id ${params.productId}`
+  }
+}

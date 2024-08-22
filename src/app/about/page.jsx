@@ -5,3 +5,8 @@ export default function About() {
     <div>About</div>
   )
 }
+
+
+export const metadata={
+  title:'about page'
+}
