@@ -1,7 +1,8 @@
-import express from "express";
-import { createTour, deleteTour, getAllTour, getTourById, updateTour } from "../Controllers/tourCn.js";
-const tourRoute = express.Router()
+import express from 'express'
+import { createTour, deleteTour, getAllTours, getTourById, updateTour } from '../Controllers/tourCn.js'
+const tourRouter=express.Router()
 
-tourRoute.route('/').get(getAllTour).post(createTour)
-tourRoute.route('/:id').get(getTourById).patch(updateTour).delete(deleteTour)
-export default tourRoute
+tourRouter.route('/').get(getAllTours).post(createTour)
+tourRouter.route('/:id').get(getTourById).patch(updateTour).delete(deleteTour)
+
+export default tourRouter
