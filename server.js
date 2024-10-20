@@ -1,35 +1,12 @@
-import express from 'express'
-import cors from 'cors'
-import morgan from 'morgan'
-import path from 'path'
-import { fileURLToPath } from 'url';
-import tourRouter from './Routes/tourRoute.js';
+import app from "./app.js";
+import mongoose from "mongoose";
+import { configDotenv } from "dotenv";
+configDotenv({ path: './config.env' })
 
-const __filename = fileURLToPath(import.meta.url)
-export const __dirname = path.dirname(__filename)
-const app=express()
+// connect to database
+mongoose.connect(process.env.DATABASE_URL).then(() => console.log('MONGOOSE IS CONNECT')).catch(err => console.log(err))
+const port = process.env.PORT || 7001
 
-
-app.use(express.json())
-app.use(cors())
-app.use(morgan('dev'))
-
-app.use('/tours',tourRouter)
-
-app.use('*',(req,res,next)=>{
-    return res.status(404).json({message:'not found'})
-})
-
-app.listen(5000,(req,res,next)=>{
+app.listen(port,(req,res,next)=>{
     console.log('server is run')
 })
-
-
-
-
-
-
-
-
-
-
