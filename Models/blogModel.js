@@ -11,7 +11,7 @@ const blogSchema = new mongoose.Schema({
         required: [true, 'description is required'],
         trim: true,
     },
-    image: { type: String },
+    image: { type: String, default: '' },
     categoryId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Category'
