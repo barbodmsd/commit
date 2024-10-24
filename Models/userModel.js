@@ -22,11 +22,17 @@ const userSchema = new mongoose.Schema({
     image: {
         type: String
     },
-    role: {
+    role:{
         type:String,
-        enum: ['user', 'admin'],
-        default: 'user'
-    }
+        enum:['admin','user'],
+        default:'user'
+    },
+    blogId:[
+        {
+            type:mongoose.Schema.ObjectId,
+            ref:'Blog'
+        }
+    ]
 }, { timestamps: true })
 
 const User = mongoose.model('User', userSchema)

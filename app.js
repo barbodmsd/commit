@@ -7,6 +7,7 @@ import blogRouter from './Routes/blogRoute.js'
 import catchError from './Utils/catchError.js'
 import HandleError from './Utils/handlError.js'
 import authRouter from './Routes/authRoute.js'
+import categoryRouter from './Routes/categoryRoute.js'
 
 const __filename = fileURLToPath(import.meta.url)
 export const __dirname = path.dirname(__filename)
@@ -20,6 +21,7 @@ app.use(morgan('dev'))
 
 // routes
 app.use('/v1/blogs', blogRouter)
+app.use('/v1/categories', categoryRouter)
 app.use('/v1/auth', authRouter)
 
 

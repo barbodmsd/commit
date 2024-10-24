@@ -3,10 +3,16 @@ import ApiFeatures from "../Utils/apiFeatures.js";
 import catchAsync from "../Utils/catchAsync.js";
 import fs from 'fs'
 import { __dirname } from './../app.js'
-
+import Category from "../Models/categoryModel.js";
+import User from "../Models/userModel.js";
+import jwt from 'jsonwebtoken'
 export const createBlog = catchAsync(async (req, res, next) => {
+    const token = req.headers.authorization.split(' ')[1]
+    const { id } = jwt.verify(token, process.env.SECRET)
     const image = req?.file?.filename || ''
-    const newBlog = await Blog.create({ ...req.body, image })
+    const newBlog = await Blog.create({ ...req.body, image, owner: id })
+    await Category.findByIdAndUpdate(newBlog.categoryId, { $push: { blogId: newBlog._id } })
+    await User.findByIdAndUpdate(id, { $push: { blogId: newBlog._id } })
     return res.status(201).json({
         status: 'success',
         data: { newBlog }
@@ -63,6 +69,8 @@ export const deleteBlog = catchAsync(async (req, res, next) => {
     if (deletedBlog?.image) {
         fs.unlinkSync(`${__dirname}/Public/${deletedBlog?.image}`)
     }
+    await Category.findByIdAndUpdate(deletedBlog.categoryId, { $pull: { blogId: deletedBlog._id } })
+    await User.findByIdAndUpdate(deletedBlog.owner, { $pull: { blogId: deletedBlog._id } })
     return res.status(200).json({
         status: 'success',
         message: 'deleted successfully'
