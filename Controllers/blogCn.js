@@ -6,6 +6,7 @@ import { __dirname } from './../app.js'
 import Category from "../Models/categoryModel.js";
 import User from "../Models/userModel.js";
 import jwt from 'jsonwebtoken'
+import decode from "../Utils/decode.js";
 export const createBlog = catchAsync(async (req, res, next) => {
     const token = req.headers.authorization.split(' ')[1]
     const { id } = jwt.verify(token, process.env.SECRET)

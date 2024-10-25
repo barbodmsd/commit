@@ -15,13 +15,13 @@ export const register = catchAsync(async (req, res, next) => {
     })
 })
 export const login = catchAsync(async (req, res, next) => {
-    const { password, email } = req?.body
-    const user = await User.findOne({ email })
+    const { password, username } = req?.body
+    const user = await User.findOne({ username })
     if (!user) {
         return next(new HandleError('user not found', 401))
     }
     const comparePassword = bcrypt.compareSync(password, user.password)
-    if (!(email == user.email) && !comparePassword) {
+    if (!(username == user.username) && !comparePassword) {
         return next(new HandleError('user not found', 401))
     }
     const token = jwt.sign({ id: user._id, role: user.role },process.env.SECRET)

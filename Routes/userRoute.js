@@ -1,4 +1,9 @@
 import express from 'express'
-const userRouter=express.Router()
+import { deleteUser, getAllUser, updateUser } from '../Controllers/userCn.js'
+import isAdmin from '../Middleware/isAdmin.js'
+const userRouter = express.Router()
+
+userRouter.route('/').get(isAdmin,getAllUser)
+userRouter.route('/:id').patch(updateUser).delete(deleteUser)
 
 export default userRouter
