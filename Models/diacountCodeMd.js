@@ -17,10 +17,11 @@ const discountCodeSchema = new mongoose.Schema({
         type: String,
         required: [true, 'startTime is required']
     },
-    disconnectCode: {
+    discount: {
         type: Number,
         min: 0,
         max: 100
+        required:[true,'discount is required']
     }
 }, { timestamps: true })
 

@@ -12,8 +12,9 @@ const cartSchema = new mongoose.Schema({
         default: 0
     },
     items: [{
-        productId: { type: mongoose.Schema.Types.ObjectId, ref: 'Product' },
-        quantity: { type: Number, default: 1 }
+        productVariant: { type: mongoose.Schema.Types.ObjectId, ref: 'ProductVariant', required: [true, 'productId is required'] },
+        quantity: { type: Number, default: 1 },
+
     }]
 })
 const userSchema = new mongoose.Schema({
@@ -35,7 +36,11 @@ const userSchema = new mongoose.Schema({
     phone: {
         type: String,
         required: [true, 'phone is required'],
-        trim: true
+        trim: true,
+        match: [
+            /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/gm,
+            "invalid phone number",
+          ],
     },
     role: {
         type: String,
