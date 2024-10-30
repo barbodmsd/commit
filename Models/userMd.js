@@ -21,13 +21,15 @@ const userSchema = new mongoose.Schema({
     username: {
         type: String,
         required: [true, 'username is required'],
-        trim: true
+        trim: true,
+        unique: [true, 'username already exist']
     },
     email: {
         type: String,
         required: [true, 'email is required'],
         match: [/[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/gm, 'email format invalid'],
-        trim: true
+        trim: true,
+        unique: [true, 'email already exist']
     },
     password: {
         type: String,
@@ -35,12 +37,13 @@ const userSchema = new mongoose.Schema({
     },
     phone: {
         type: String,
+        unique: [true, 'phone already exist'],
         required: [true, 'phone is required'],
         trim: true,
         match: [
             /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/gm,
             "invalid phone number",
-          ],
+        ],
     },
     role: {
         type: String,

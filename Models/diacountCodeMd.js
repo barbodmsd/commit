@@ -20,7 +20,7 @@ const discountCodeSchema = new mongoose.Schema({
     discount: {
         type: Number,
         min: 0,
-        max: 100
+        max: 100,
         required:[true,'discount is required']
     }
 }, { timestamps: true })
