@@ -35,23 +35,23 @@ const userSchema = new mongoose.Schema({
         type: String,
         trim: true
     },
-    phone: {
-        type: String,
-        unique: [true, 'phone already exist'],
-        required: [true, 'phone is required'],
-        trim: true,
-        match: [
-            /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/gm,
-            "invalid phone number",
-        ],
-    },
-    role: {
-        type: String,
-        enum: ['user', 'admin'],
-        default: 'user'
-    },
-    address: addressSchema,
-    cart: { type: cartSchema, required: [true, 'cartSchema is required'] }
+    // phone: {
+    //     type: String,
+    //     unique: [true, 'phone already exist'],
+    //     required: [true, 'phone is required'],
+    //     trim: true,
+    //     match: [
+    //         /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/gm,
+    //         "invalid phone number",
+    //     ],
+    // },
+    // role: {
+    //     type: String,
+    //     enum: ['user', 'admin'],
+    //     default: 'user'
+    // },
+    // address: addressSchema,
+    // cart: { type: cartSchema, required: [true, 'cartSchema is required'] }
 }, { timestamps: true })
 
 const User = mongoose.model('User', userSchema)
