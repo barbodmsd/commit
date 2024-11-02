@@ -8,7 +8,7 @@ class Response {
     send() {
         return this.res.status(this.status).json({
             status: String(this.status).startsWith('2') ? 'success' : 'error',
-            data: this.dataPayload
+            ...this.dataPayload,
         });
     }
 }
