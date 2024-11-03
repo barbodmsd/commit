@@ -3,17 +3,16 @@ import {
   forgetPassword,
   login,
   register,
+  sendAgain,
   verifySmsCode,
 } from "../Controllers/authCn.js";
-import isAdmin from "../Middlewares/isAdmin.js";
-import isLogin from "../Middlewares/isLogin.js";
 
 const authRouter = express.Router();
 
 authRouter.route("/register").post(register);
 authRouter.route("/login").post(login);
-// authRouter.route("/send-sms").post(sendSms);
-authRouter.route("/verify-code").post(isLogin,verifySmsCode);
+authRouter.route("/verify-code").post(verifySmsCode);
+authRouter.route("/send-again").post(sendAgain);
 authRouter.route("/forget-password").post(forgetPassword);
 
 export default authRouter;
