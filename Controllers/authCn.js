@@ -62,7 +62,10 @@ export const verifySmsCode = catchAsync(async (req, res, next) => {
 });
 
 export const sendAgain = catchAsync(async (req, res, next) => {
-  const { phone } = jwt.verify(oldToken, process.env.JWT_SECRET);
+  const { phone } = jwt.verify(
+    req?.headers?.authorization?.split(" ")[1],
+    process.env.JWT_SECRET
+  );
   const send = await sendSmd(phone);
   if (!send.success) {
     return new HandleError(send.message, 500);
@@ -72,6 +75,10 @@ export const sendAgain = catchAsync(async (req, res, next) => {
 
 export const forgetPassword = catchAsync(async (req, res, next) => {
   const { phone } = req.body;
+  const user = await User.findOne({ phone });
+  if (!user) {
+    return next(new HandleError("user not found", 404));
+  }
   const smsData = await sendSmd(phone);
   if (!smsData.success) {
     return next(new HandleError(smsData.message, 400));
@@ -79,18 +86,39 @@ export const forgetPassword = catchAsync(async (req, res, next) => {
   return new Response(res, 200, { message: "sms sent" }).send();
 });
 
-export const updatePassword = catchAsync(async (req, res, next) => {
-  const { phone, code, password } = req.body;
+export const verifyCodePassword = catchAsync(async (req, res, next) => {
+  const { phone, code } = req.body;
   const smsData = await verifyCode(phone, code);
   if (!smsData.success) {
     return next(new HandleError(smsData.message, 400));
   }
-  const hashPass = bcrypt.hashSync(password, 10);
-  const user = await User.findOneAndUpdate(
-    { phone },
-    { password: hashPass },
-    { new: true }
+  const user = await User.findOne({ phone });
+  const token = jwt.sign(
+    { id: user._id, role: user.role, loginComplete: true },
+    process.env.JWT_SECRET
   );
 
-  return new Response(res, 200, { message: "password updated", user }).send();
+  return new Response(res, 200, { message: "password updated", token }).send();
+});
+
+export const updatePassword = catchAsync(async (req, res, next) => {
+  const { password } = req.body;
+  const { id } = jwt.verify(
+    req?.headers?.authorization?.split(" ")[1],
+    process.env.JWT_SECRET
+  );
+  const hashPassword = bcrypt.hashSync(password, 10);
+  const updatedUser = await User.findByIdAndUpdate(
+    id,
+    { password: hashPassword },
+    { new: true }
+  );
+  return new Response(res, 200, {
+    message: "password updated successfully ",
+    data: {
+      username: updatedUser.username,
+      email: updatedUser.email,
+      role: updatedUser.role,
+    },
+  });
 });
