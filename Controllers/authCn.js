@@ -15,6 +15,7 @@ export const register = catchAsync(async (req, res, next) => {
     message: "register successfully",
   }).send();
 });
+
 export const login = catchAsync(async (req, res, next) => {
   const { password, username } = req.body;
   const user = await User.findOne({ username });
@@ -23,7 +24,7 @@ export const login = catchAsync(async (req, res, next) => {
   }
   const comparePass = bcrypt.compareSync(password, user.password);
   if (!comparePass || username != user.username) {
-    return next(new HandleError("user not found", 404));
+    return next(new HandleError("username or password is incorrect", 404));
   }
   const token = jwt.sign(
     { id: user._id, role: user.role, loginComplete: false, phone: user.phone },
@@ -31,13 +32,15 @@ export const login = catchAsync(async (req, res, next) => {
   );
   const send = await sendSmd(user.phone);
   if (!send.success) {
-    return new HandleError(send.message, 500);
+    return next(new HandleError(send.message, 500));
   }
   return new Response(res, 200, {
     token,
+    loginComplete: false,
     message: "login successfully",
   }).send();
 });
+
 export const verifySmsCode = catchAsync(async (req, res, next) => {
   const { code } = req.body;
   const oldToken = req?.headers?.authorization?.split(" ")[1];
@@ -57,12 +60,37 @@ export const verifySmsCode = catchAsync(async (req, res, next) => {
   );
   return new Response(res, 200, { user, token }).send();
 });
+
 export const sendAgain = catchAsync(async (req, res, next) => {
-  const { phone, id } = jwt.verify(oldToken, process.env.JWT_SECRET);
+  const { phone } = jwt.verify(oldToken, process.env.JWT_SECRET);
   const send = await sendSmd(phone);
   if (!send.success) {
     return new HandleError(send.message, 500);
   }
   return new Response(res, 200, { message: "sms sent" }).send();
 });
-export const forgetPassword = catchAsync(async (req, res, next) => {});
+
+export const forgetPassword = catchAsync(async (req, res, next) => {
+  const { phone } = req.body;
+  const smsData = await sendSmd(phone);
+  if (!smsData.success) {
+    return next(new HandleError(smsData.message, 400));
+  }
+  return new Response(res, 200, { message: "sms sent" }).send();
+});
+
+export const updatePassword = catchAsync(async (req, res, next) => {
+  const { phone, code, password } = req.body;
+  const smsData = await verifyCode(phone, code);
+  if (!smsData.success) {
+    return next(new HandleError(smsData.message, 400));
+  }
+  const hashPass = bcrypt.hashSync(password, 10);
+  const user = await User.findOneAndUpdate(
+    { phone },
+    { password: hashPass },
+    { new: true }
+  );
+
+  return new Response(res, 200, { message: "password updated", user }).send();
+});
