@@ -5,7 +5,7 @@ const isLogin = () => {
     const token = req.headers.authorization.split(" ")[1];
     const verify = jwt.verify(token, process.env.JWT_SECRET);
     if (!verify.id) {
-      return new HandleError("login", 400);
+      return new HandleError("login required", 400);
     }
     req.token = verify;
     next();
