@@ -9,5 +9,4 @@ import searchRouter from "./Routes/searchRoute.js";
 import sliderRouter from "./Routes/sliderRoute.js";
 import userRouter from "./Routes/userRoute.js";
 import variantRouter from "./Routes/variantRoute.js";
-const routes = { variantRouter, userRouter, sliderRouter, authRouter, cartRouter, categoryRouter, commentRouter, discountCodeRouter, orderHistoryRouter, productRouter, searchRouter }
-export default routes
+export  { variantRouter, userRouter, sliderRouter, authRouter, cartRouter, categoryRouter, commentRouter, discountCodeRouter, orderHistoryRouter, productRouter, searchRouter }
