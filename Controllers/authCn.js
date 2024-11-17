@@ -120,5 +120,5 @@ export const updatePassword = catchAsync(async (req, res, next) => {
       email: updatedUser.email,
       role: updatedUser.role,
     },
-  });
+  }).send();
 });

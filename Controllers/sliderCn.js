@@ -7,12 +7,12 @@ import {__dirname} from './../app.js'
 export const createSlider = catchAsync(async (req, res, next) => {
   const image = req?.file?.filename || "";
   const newSlider = await Slider.create({ ...req.body, image });
-  return new Response(res, 201, { newSlider });
+  return new Response(res, 201, { newSlider }).send();
 });
 
 export const getAllSliders = catchAsync(async (req, res, next) => {
   const sliders = await Slider.find();
-  return new Response(res, 200, { sliders });
+  return new Response(res, 200, { sliders }).send();
 });
 
 export const deleteSlider = catchAsync(async (req, res, next) => {
@@ -20,5 +20,5 @@ export const deleteSlider = catchAsync(async (req, res, next) => {
   if(deletedSlider?.image){
     fs.unlinkSync(`${__dirname}/Public/${deletedSlider.image}`)
   }
-  return new Response(res,200,{message:'slider deleted successfully'})
+  return new Response(res,200,{message:'slider deleted successfully'}).send()
 });
