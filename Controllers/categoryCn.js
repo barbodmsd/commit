@@ -1,8 +1,8 @@
-import Category from "../Models/categoryMd";
-import catchAsync from "../Utils/catchAsync";
-import Response from "../Utils/response";
+import Category from "../Models/categoryMd.js";
+import catchAsync from "../Utils/catchAsync.js";
+import Response from "../Utils/response.js";
 import fs from "fs";
-import { __dirname } from "../app";
+import { __dirname } from "../app.js";
 
 export const createCategory = catchAsync(async (req, res, next) => {
   const image = req?.file?.filename || "";

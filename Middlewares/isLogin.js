@@ -3,11 +3,11 @@ import HandleError from '../Utils/handleError.js';
 const isLogin = () => {
   try {
     const token = req.headers.authorization.split(" ")[1];
-    const verify = jwt.verify(token, process.env.JWT_SECRET);
-    if (!verify.id) {
+    const {loginComplete} = jwt.verify(token, process.env.JWT_SECRET);
+    if (!loginComplete) {
       return new HandleError("login required", 400);
     }
-    req.token = verify;
+    return next()
     next();
   } catch (error) {
     return new HandleError('token required', 400);
